@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import * as React from 'react';
-import ReactDOM from 'react-dom';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Card from '@mui/material/Card';
