@@ -12,6 +12,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          <Button variant="contained">Connect</Button>
+        </p>
         <Card>
           <CardHeader title="How're you feeling today?" />
           <CardContent>
@@ -19,23 +22,12 @@ function App() {
               <Button>😀</Button>
               <Button>😐</Button>
               <Button>😢</Button>
-            </ButtonGroup>
+            </ButtonGroup> 
           </CardContent>
         </Card>
         <p>
-          <Button variant="contained">Hello World</Button>
+          <Button variant="contained">Help</Button>
         </p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
