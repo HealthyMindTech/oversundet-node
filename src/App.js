@@ -1,14 +1,13 @@
 import * as React from 'react';
 import pcb_image from './pcb.png';
 import './App.css';
-import { Button, IconButton} from '@mui/material/';
+import { IconButton } from '@mui/material/';
 import { Card, CardMedia, CardActionArea, Grid } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import SignalWifiConnectedNoInternet4Icon from '@mui/icons-material/SignalWifiConnectedNoInternet4';
-import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
+// import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import Input from '@mui/material/Input';
+
 
 function App() {
   return (
