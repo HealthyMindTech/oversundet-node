@@ -32,10 +32,10 @@ function App() {
                     <Box
                       sx={{
                         position: 'absolute',
-                        bottom: 5,
-                        left: 155,
-                        width: 175,
-                        height: 40,
+                        bottom: "0.5%",
+                        left: "30%",
+                        width: "30%",
+                        height: "4.8%",
                         border: '1px solid #F00',
                         bgcolor: 'rgba(0, 0, 0, 0.54)',
                         color: 'white',
@@ -54,10 +54,10 @@ function App() {
                     <Box label="😀"
                       sx={{
                         position: 'absolute',
-                        top: 270,
-                        left: 167,
-                        width: 25,
-                        height: 65,
+                        top: "32.5%",
+                        left: "31%",
+                        width: "4.5%",
+                        height: "9%",
                         border: '1px solid #F00',
                         bgcolor: 'rgba(0, 0, 0, 0.54)',
                         color: 'white',
@@ -71,10 +71,10 @@ function App() {
                     <Box label="😐"
                       sx={{
                         position: 'absolute',
-                        top: 270,
-                        left: 224,
-                        width: 25,
-                        height: 65,
+                        top: "32.5%",
+                        left: "41.8%",
+                        width: "4.5%",
+                        height: "9%",
                         border: '1px solid #F00',
                         bgcolor: 'rgba(0, 0, 0, 0.54)',
                         color: 'white',
@@ -88,10 +88,10 @@ function App() {
                     <Box label="😥"
                       sx={{
                         position: 'absolute',
-                        top: 270,
-                        left: 282,
-                        width: 25,
-                        height: 65,
+                        top: "32.5%",
+                        left: "52.6%",
+                        width: "4.5%",
+                        height: "9%",
                         border: '1px solid #F00',
                         bgcolor: 'rgba(0, 0, 0, 0.54)',
                         color: 'white',

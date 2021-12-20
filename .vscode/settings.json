@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/a38df251-f16a-417e-821b-59f50795fc6a/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/kimstest",
+    "appService.deploySubpath": "."
+}
