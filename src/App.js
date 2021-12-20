@@ -25,7 +25,7 @@ function App() {
                       alt="pcb"
                   />
       
-                  <IconButton style={{ position: "absolute", top: "5px", right: "5px" }}>
+                  <IconButton style={{ position: "absolute", top: "3%", right: "3%" }}>
                     <SignalWifiConnectedNoInternet4Icon fontSize="large"/>
                   </IconButton>
                   <Link href="/">
@@ -45,7 +45,7 @@ function App() {
                     </Box>
                   </Link>
                   
-                  <IconButton style={{ position: "absolute", top: "55px", right: "5px" }}
+                  <IconButton style={{ position: "absolute", top: "10%", right: "3%" }}
                     tooltip="How are ya?">
                     <EmojiEmotionsIcon fontSize="large"/>
                   </IconButton>
@@ -102,7 +102,7 @@ function App() {
                   </Link>
 
                   <Link href="https://discord.gg/45cjemQa">
-                    <IconButton style={{ position: "absolute", top: "105px", right: "5px" }}
+                    <IconButton style={{ position: "absolute", top: "17%", right: "3%" }}
                       tooltip="Questions?">
                       <HelpIcon fontSize="large"/>
                     </IconButton>
