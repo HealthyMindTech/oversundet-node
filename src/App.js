@@ -2,7 +2,7 @@ import * as React from 'react';
 import pcb_image from './pcb.png';
 import './App.css';
 import { IconButton } from '@mui/material/';
-import { Card, CardMedia, CardActionArea, Grid } from '@mui/material';
+import { Card, CardMedia, CardActionArea } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import SignalWifiConnectedNoInternet4Icon from '@mui/icons-material/SignalWifiConnectedNoInternet4';
 // import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
