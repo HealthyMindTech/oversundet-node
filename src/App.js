@@ -2,7 +2,7 @@ import * as React from 'react';
 import pcb_image from './pcb.png';
 import './App.css';
 import { IconButton } from '@mui/material/';
-import { Card, CardMedia, CardActionArea } from '@mui/material';
+import { Card, CardMedia, CardActionArea, Typography } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import SignalWifiConnectedNoInternet4Icon from '@mui/icons-material/SignalWifiConnectedNoInternet4';
 // import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
@@ -106,6 +106,13 @@ function App() {
                   <HelpIcon fontSize="large"/>
                 </IconButton>
               </Link>
+
+              <Box sx={{ borderColor: 'primary.main' }}>
+                <Typography variant="h1" style={{ transform: 'rotate(90deg)', position: "absolute", top: "60%", right: "-40%", fontWeight: "bold"}} >
+                  Oversundet
+                </Typography>
+              </Box>
+
             </Box>
             {/* if connected use */}
             {/* <SignalWifiStatusbar4BarIcon fontSize="large" style={{ position: "absolute", top: "5px", right: "5px" }}/> */}
