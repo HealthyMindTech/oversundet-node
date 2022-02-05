@@ -8,8 +8,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 // import SignalWifiConnectedNoInternet4Icon from '@mui/icons-material/SignalWifiConnectedNoInternet4';
 // import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
 // import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-import DeckGL from '@deck.gl/react';
-import {LineLayer} from '@deck.gl/layers';
 
 import { Box } from '@mui/material';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
@@ -24,7 +22,6 @@ import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import {StaticMap} from 'react-map-gl';
 
 
 // Set your mapbox access token here
@@ -93,9 +90,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function App() {
-  const layers = [
-    new LineLayer({id: 'line-layer', data})
-  ];
   return (
     <div className="App">
       {/* <header className="App-header"> */}
@@ -188,12 +182,6 @@ function App() {
                     height: 240,
                   }}
                 >
-                  <DeckGL
-      initialViewState={INITIAL_VIEW_STATE}
-      controller={true}
-      layers={layers}>
-                  <StaticMap mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN} />
-                </DeckGL>
                 </Paper>
               </Grid>
               {/* Recent Orders */}
