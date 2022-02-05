@@ -77,6 +77,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function App() {
+  const [data, setData] = React.useState({
+    'Elsinore': [2, 9, 3, 5, 0, 3],
+    'Helsingborg': [2, 9, 2, 0, 2, 3],
+  });
   return (
     <div className="App">
       {/* <header className="App-header"> */}
@@ -117,21 +121,6 @@ function App() {
             </IconButton>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={false}>
-          <Toolbar
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              px: [1],
-            }}
-          >
-            <IconButton onClick={() => {}}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-        </Drawer>
         <Box
           component="main"
           sx={{
@@ -145,24 +134,23 @@ function App() {
           }}
         >
           <Toolbar />
-          <Container 
-            maxWidth="lg" 
-            sx={{ mt: 4, mb: 4 }} 
+          <Box
             style={{
               height: '100%',
               backgroundImage: `url("${map_image}")`, 
               position: 'relative', 
               backgroundRepeatY: 'no-repeat',
-              backgroundSize: '158%',
-              backgroundPositionX: '-314px'
+              backgroundSize: '184%',
+              backgroundPositionX: '-820px',
+              backgroundPositionY: '-549px',
               }}>
-                <Box style={{position: 'absolute', left: '61%', top: '16%'}}>
-                  <DataPlot />
+                <Box style={{position: 'absolute', left: '61%', top: '11%'}}>
+                  <DataPlot data={data} name={'Helsingborg'}/>
                 </Box>
-                <Box style={{position: 'absolute', left: '14%', top: '16%'}}>
-                  <DataPlot />
+                <Box style={{position: 'absolute', left: '14%', top: '11%'}}>
+                  <DataPlot data={data} name={'Elsinore'}/>
                 </Box>
-          </Container>
+          </Box>
         </Box>
       </Box>
     </ThemeProvider>

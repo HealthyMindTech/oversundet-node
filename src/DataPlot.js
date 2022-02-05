@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 import {
   Chart as ChartJS,
@@ -24,13 +26,14 @@ ChartJS.register(
 );
 
 export default function DataPlot(props) {
+  const { data, name } = props;
 
-  const data = {
-    labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
+  const plotData = {
+    labels: ['Temp', 'Humidity', 'Sound', 'Particles', 'News', 'Mood'],
     datasets: [
       {
-        label: '# of Votes',
-        data: [2, 9, 3, 5, 2, 3],
+        label: name,
+        data: data[name],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
@@ -38,14 +41,14 @@ export default function DataPlot(props) {
     ],
   };
   return (
-    <Box style={{
+    <Card style={{
         width: '350px', 
         height: '350px', 
-        backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-        borderRadius:'8px',
-        padding: '5px'
+        backgroundColor: 'rgba(255, 255, 255, 1)', 
       }}>
-      <Radar data={data} />
-    </Box>
+      <CardContent>
+        <Radar data={plotData} />
+      </CardContent>
+    </Card>
   );
 }
