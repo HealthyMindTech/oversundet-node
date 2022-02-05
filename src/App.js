@@ -1,5 +1,6 @@
 import * as React from 'react';
 // import pcb_image from './pcb.png';
+import map_image from './map.png';
 import './App.css';
 import { IconButton } from '@mui/material/';
 import { Typography } from '@mui/material';
@@ -8,6 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 // import SignalWifiConnectedNoInternet4Icon from '@mui/icons-material/SignalWifiConnectedNoInternet4';
 // import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
 // import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+
 
 import { Box } from '@mui/material';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
@@ -22,11 +24,10 @@ import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-
+import DataPlot from './DataPlot';
 
 
 const drawerWidth = 240;
-
 
 
 
@@ -144,147 +145,27 @@ function App() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                </Paper>
-              </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                </Paper>
-              </Grid>
-            </Grid>
+          <Container 
+            maxWidth="lg" 
+            sx={{ mt: 4, mb: 4 }} 
+            style={{
+              height: '100%',
+              backgroundImage: `url("${map_image}")`, 
+              position: 'relative', 
+              backgroundRepeatY: 'no-repeat',
+              backgroundSize: '158%',
+              backgroundPositionX: '-314px'
+              }}>
+                <Box style={{position: 'absolute', left: '61%', top: '16%'}}>
+                  <DataPlot />
+                </Box>
+                <Box style={{position: 'absolute', left: '14%', top: '16%'}}>
+                  <DataPlot />
+                </Box>
           </Container>
         </Box>
       </Box>
     </ThemeProvider>
-{/*         
-          <Card>
-            <CardActionArea>
-            </CardActionArea>
-            <Box sx={{ position: 'relative' }}>
-              <CardMedia
-                  component="img"
-                  image={pcb_image}
-                  alt="pcb"
-              />
-  
-              <IconButton style={{ position: "absolute", top: "3%", right: "3%" }}>
-                <SignalWifiConnectedNoInternet4Icon fontSize="large"/>
-              </IconButton>
-              <Link href="/">
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    bottom: "0.5%",
-                    left: "30%",
-                    width: "30%",
-                    height: "4.8%",
-                    border: '1px solid #F00',
-                    bgcolor: 'rgba(0, 0, 0, 0.54)',
-                    color: 'white',
-                    padding: '10px',
-                  }}
-                >
-                </Box>
-              </Link>
-              
-              <IconButton style={{ position: "absolute", top: "10%", right: "3%" }}
-                tooltip="How are ya?">
-                <EmojiEmotionsIcon fontSize="large"/>
-              </IconButton>
-
-              <Link href="/">
-                <Box label="😀"
-                  sx={{
-                    position: 'absolute',
-                    top: "32.5%",
-                    left: "31%",
-                    width: "4.5%",
-                    height: "9%",
-                    border: '1px solid #F00',
-                    bgcolor: 'rgba(0, 0, 0, 0.54)',
-                    color: 'white',
-                    padding: '10px',
-                  }}
-                >
-                </Box>
-              </Link>
-              
-              <Link href="/">
-                <Box label="😐"
-                  sx={{
-                    position: 'absolute',
-                    top: "32.5%",
-                    left: "41.8%",
-                    width: "4.5%",
-                    height: "9%",
-                    border: '1px solid #F00',
-                    bgcolor: 'rgba(0, 0, 0, 0.54)',
-                    color: 'white',
-                    padding: '10px',
-                  }}
-                >
-                </Box>
-              </Link>
-
-              <Link href="/">
-                <Box label="😥"
-                  sx={{
-                    position: 'absolute',
-                    top: "32.5%",
-                    left: "52.6%",
-                    width: "4.5%",
-                    height: "9%",
-                    border: '1px solid #F00',
-                    bgcolor: 'rgba(0, 0, 0, 0.54)',
-                    color: 'white',
-                    padding: '10px',
-                  }}
-                >
-                </Box>
-              </Link>
-
-              <Link href="https://discord.gg/45cjemQa">
-                <IconButton style={{ position: "absolute", top: "17%", right: "3%" }}
-                  tooltip="Questions?">
-                  <HelpIcon fontSize="large"/>
-                </IconButton>
-              </Link>
-
-              <Box sx={{ borderColor: 'primary.main' }}>
-                <Typography variant="h1" style={{ transform: 'rotate(90deg)', position: "absolute", top: "60%", right: "-40%", fontWeight: "bold"}} >
-                  Oversundet
-                </Typography>
-              </Box>
-
-            </Box>
-
-             <SignalWifiStatusbar4BarIcon fontSize="large" style={{ position: "absolute", top: "5px", right: "5px" }}/> 
-
-          </Card> */}
     </div>
   );
 }
