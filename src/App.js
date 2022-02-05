@@ -24,24 +24,10 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 
-// Set your mapbox access token here
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoibWFydGluYmFzdGUiLCJhIjoiY2t6MWRraWh5MWt5ejMwbXhiM2JzbWNtOSJ9.j69n_qQHAAGjnu5luRL8yw';
 
 const drawerWidth = 240;
 
-// Viewport settings
-const INITIAL_VIEW_STATE = {
-  longitude: -122.41669,
-  latitude: 37.7853,
-  zoom: 13,
-  pitch: 0,
-  bearing: 0
-};
 
-// Data to be used by the LineLayer
-const data = [
-  {sourcePosition: [-122.41669, 37.7853], targetPosition: [-122.41669, 37.781]}
-];
 
 
 const AppBar = styled(MuiAppBar, {
