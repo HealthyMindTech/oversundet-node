@@ -47,7 +47,7 @@ export default function DataPlot(props) {
         backgroundColor: 'rgba(255, 255, 255, 1)', 
       }}>
       <CardContent>
-        <Radar data={plotData} />
+        <Radar data={plotData} options={{r: {suggestedMin: 1, suggestedMax: 9}}}/>
       </CardContent>
     </Card>
   );
