@@ -26,14 +26,14 @@ ChartJS.register(
 );
 
 export default function DataPlot(props) {
-  const { data, name } = props;
+  const { data, name, selectedTimestamp } = props;
 
   const plotData = {
     labels: ['Temp', 'Humidity', 'Sound', 'Particles', 'News', 'Mood'],
     datasets: [
       {
         label: name,
-        data: data[name],
+        data: data[name][selectedTimestamp],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
