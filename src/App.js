@@ -21,6 +21,7 @@ import Badge from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import DataPlot from './DataPlot';
+import MoodModal from './MoodDialog';
 
 
 const drawerWidth = 240;
@@ -125,93 +126,94 @@ function App() {
     <div className="App">
       {/* <header className="App-header"> */}
       <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar position="absolute" open={false}>
-          <Toolbar
-            sx={{
-              pr: '24px', // keep right padding when drawer closed
-            }}
-          >
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={() => {}}
+        <MoodModal open={true}/>
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+          <AppBar position="absolute" open={false}>
+            <Toolbar
               sx={{
-                marginRight: '36px',
-                ...(false && { display: 'none' }),
+                pr: '24px', // keep right padding when drawer closed
               }}
             >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}
-            >
-              Dashboard
-            </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
-          }}
-        >
-          <Toolbar />
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                onClick={() => {}}
+                sx={{
+                  marginRight: '36px',
+                  ...(false && { display: 'none' }),
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography
+                component="h1"
+                variant="h6"
+                color="inherit"
+                noWrap
+                sx={{ flexGrow: 1 }}
+              >
+                Dashboard
+              </Typography>
+              <IconButton color="inherit">
+                <Badge badgeContent={4} color="secondary">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+            </Toolbar>
+          </AppBar>
           <Box
-            style={{
-              height: '100%',
-              backgroundImage: `url("${map_image}")`, 
-              position: 'relative', 
-              backgroundRepeatY: 'no-repeat',
-              backgroundSize: '184%',
-              backgroundPositionX: '-820px',
-              backgroundPositionY: '-549px',
-              }}>
-                <Container>
-                  <Slider
-                    aria-label="Temperature"
-                    defaultValue={0}
-                    valueLabelDisplay="auto"
-                    step={1}
-                    marks
-                    min={0}
-                    max={data['Elsinore'].length - 1}
-                    onChange={(event, value) => {
-                      setSelectedTimestamp(value);
-                    }}
-                    value={selectedTimestamp}
-                  />
-                  <Typography id="discrete-slider-custom" gutterBottom style={{color: 'white', fontWeight: 'bold'}}>
-                    {selectedTimestampText}
-                  </Typography>
-                </Container>
-                <Box style={{position: 'absolute', left: '61%', top: '11%'}}>
-                  <DataPlot data={data} name={'Helsingborg'} selectedTimestamp={selectedTimestamp}/>
-                </Box>
-                <Box style={{position: 'absolute', left: '14%', top: '11%'}}>
-                  <DataPlot data={data} name={'Elsinore'} selectedTimestamp={selectedTimestamp}/>
-                </Box>
+            component="main"
+            sx={{
+              backgroundColor: (theme) =>
+                theme.palette.mode === 'light'
+                  ? theme.palette.grey[100]
+                  : theme.palette.grey[900],
+              flexGrow: 1,
+              height: '100vh',
+              overflow: 'auto',
+            }}
+          >
+            <Toolbar />
+            <Box
+              style={{
+                height: '100%',
+                backgroundImage: `url("${map_image}")`, 
+                position: 'relative', 
+                backgroundRepeatY: 'no-repeat',
+                backgroundSize: '184%',
+                backgroundPositionX: '-820px',
+                backgroundPositionY: '-549px',
+                }}>
+                  <Container>
+                    <Slider
+                      aria-label="Temperature"
+                      defaultValue={0}
+                      valueLabelDisplay="auto"
+                      step={1}
+                      marks
+                      min={0}
+                      max={data['Elsinore'].length - 1}
+                      onChange={(event, value) => {
+                        setSelectedTimestamp(value);
+                      }}
+                      value={selectedTimestamp}
+                    />
+                    <Typography id="discrete-slider-custom" gutterBottom style={{color: 'white', fontWeight: 'bold'}}>
+                      {selectedTimestampText}
+                    </Typography>
+                  </Container>
+                  <Box style={{position: 'absolute', left: '61%', top: '11%'}}>
+                    <DataPlot data={data} name={'Helsingborg'} selectedTimestamp={selectedTimestamp}/>
+                  </Box>
+                  <Box style={{position: 'absolute', left: '14%', top: '11%'}}>
+                    <DataPlot data={data} name={'Elsinore'} selectedTimestamp={selectedTimestamp}/>
+                  </Box>
+            </Box>
           </Box>
         </Box>
-      </Box>
-    </ThemeProvider>
+      </ThemeProvider>
     </div>
   );
 }
