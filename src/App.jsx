@@ -22,7 +22,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import DataPlot from './DataPlot';
 import MoodModal from './MoodDialog';
-
+import SensorDataDrawer from './SensorDataDrawer';
 
 const drawerWidth = 240;
 
@@ -126,7 +126,7 @@ function App() {
     <div className="App">
       {/* <header className="App-header"> */}
       <ThemeProvider theme={mdTheme}>
-        <MoodModal open={true}/>
+
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar position="absolute" open={false}>
@@ -156,6 +156,8 @@ function App() {
               >
                 Dashboard
               </Typography>
+              <MoodModal open={true}/>
+              <SensorDataDrawer />
               <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <NotificationsIcon />

@@ -1,9 +1,10 @@
 import React from "react";
 
 import ButtonGroup from '@mui/material/ButtonGroup';
-import Typography from '@mui/material/Typography';
+import MoodIcon from '@mui/icons-material/Mood';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -33,9 +34,9 @@ export default function MoodDialog() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
-      </Button>
+      <IconButton color="inherit" onClick={handleClickOpen}>
+        <MoodIcon />
+      </IconButton>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Mood Dialog</DialogTitle>
         <DialogContent>
