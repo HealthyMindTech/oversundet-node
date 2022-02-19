@@ -1,6 +1,6 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import { DefaultAzureCredential, ManagedIdentityCredential } from '@azure/identity';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 const TIMESERIES_FQDN = "858c82fb-226a-46bb-89c0-5bb7c278aa73.env.timeseries.azure.com";
 const TIMESERIES_QUERY_URL = `https://${TIMESERIES_FQDN}/timeseries/query?api-version=2020-07-31`;
@@ -11,7 +11,8 @@ const MEASUREMENTS = [
     "PM2.5",
     "PM10",
     "Noise",
-    "Humidity"
+    "Humidity",
+    "Mood"
 ];
 
 const GOOD_INTERVALS = ["PT1M", "PT5M", "PT1H", "PT12H", "P1D"];
@@ -44,7 +45,7 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
     const token = await credential.getToken("https://api.timeseries.azure.com/");
     const accessToken = token.token;
 
-    let res;
+    let res: AxiosResponse<any>;
     try {
         res = await axios.post(TIMESERIES_QUERY_URL, {
             "aggregateSeries": {
