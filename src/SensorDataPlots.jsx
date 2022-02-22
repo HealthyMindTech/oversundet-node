@@ -1,26 +1,63 @@
 import React, { useState, useRef } from 'react';
-import TsiClient from "tsiclient";
+// import axios from 'axios';
+import Tsiclient from 'tsiclient';
 
 class LineChart extends React.Component {
   constructor(props) {
     super(props);
-    this.client = new TsiClient();
-    this.chart = null;
+    this.client = new Tsiclient();
+    this.measurements = [
+      'Temperature',
+      'Humidity',
+      'Noise',
+      'PM1',
+      'PM2.5',
+      'PM10',
+      'Mood',
+    ];
 
+    this.chart = null;
     this.state = {
-      data: this.createFakeData(),
+      data: this.measurements.map(_ => {return {} }),
       linesElement: null
-    }
+    };
+    this.measurements.forEach((measurement) => {
+      this.queryData(measurement);
+    });
   }
 
-  queryData() {
-    const token = ;
-    const environmentFqdn;
-    const tsxObject = {};
-    const resp = tsiClient.server.getEvents(token, environmentFqdn, tsxObject)
-    .then(function(result){
-        console.log(result)
-    })
+  queryData(measurement) {
+    const parameters = {
+      // device: '',
+      measure: measurement,
+      interval: 'PT1H',
+      fromTime: '2022-02-16T00:00:00Z',
+      toTime: '2022-02-17T00:00:00Z'
+    };
+    const url = new URL('https://oversundet-functions-apim.azure-api.net/oversundet-functions/GetOneSensor');
+    url.search = new URLSearchParams(parameters).toString();
+
+    fetch(url)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        const formattedData = {};
+        data.timestamps.forEach((timestamp, index) => {
+          formattedData[timestamp] = {'avg': data.values[index]};
+        });
+        const prevData = this.state.data;
+        const measurementIndex = this.measurements.indexOf(measurement);
+        prevData[measurementIndex][`Factory${measurementIndex}`] = {'': formattedData};
+        this.setState({
+          data: prevData
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
 
   createFakeData() {
     let numberOfBuckets = 120;
@@ -48,12 +85,13 @@ class LineChart extends React.Component {
     setTimeout(() => {
       this.setState({
         linesElement: document.getElementById("linechart")
-      })
+      });
+      this.queryData();
     }, 1000);
   }
 
   render() {
-    if (this.state.linesElement !== null) {
+    if (this.state.linesElement !== null && this.state.data !== null) {
       this.chart = !this.chart ? new this.client.ux.LineChart(this.state.linesElement) : this.chart;
       this.chart.render(this.state.data, { theme: 'light', legend: 'compact', tooltip: 'true', swimLaneOptions: this.props.swimLaneOptions }, this.props.chartDataOptions)
     }
@@ -161,14 +199,22 @@ export default function SensorDataPlots (props) {
       0: {yAxisType: 'shared', label: 'Lane 0', onClick: () => alert("'Lane 0' label/axis clicked")},
       1: {yAxisType: 'shared', label: 'Lane 1', onClick: () => alert("'Lane 1' label/axis clicked")},
       2: {yAxisType: 'shared', label: 'Lane 2', onClick: () => alert("'Lane 2' label/axis clicked")},
-      3: {yAxisType: 'shared', label: 'Lane 3', onClick: () => alert("'Lane 3' label/axis clicked")}
-  })
+      3: {yAxisType: 'shared', label: 'Lane 3', onClick: () => alert("'Lane 3' label/axis clicked")},
+      4: {yAxisType: 'shared', label: 'Lane 4', onClick: () => alert("'Lane 4' label/axis clicked")},
+      5: {yAxisType: 'shared', label: 'Lane 5', onClick: () => alert("'Lane 5' label/axis clicked")},
+      6: {yAxisType: 'shared', label: 'Lane 6', onClick: () => alert("'Lane 6' label/axis clicked")},
+      7: {yAxisType: 'shared', label: 'Lane 7', onClick: () => alert("'Lane 7' label/axis clicked")},
+    })
 
   const [chartDataOptions, setChartDataOptions] = useState([
       {dataType: 'numeric', swimLane: 0}, 
       {dataType: 'numeric', swimLane: 1}, 
       {dataType: 'numeric', swimLane: 2},
       {dataType: 'numeric', swimLane: 3},
+      {dataType: 'numeric', swimLane: 4},
+      {dataType: 'numeric', swimLane: 5},
+      {dataType: 'numeric', swimLane: 6},
+      {dataType: 'numeric', swimLane: 7},
   ])
 
   return(
