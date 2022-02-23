@@ -1,11 +1,18 @@
 import * as React from 'react';
+import { makeStyles } from '@mui/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import SensorDataPlots from './SensorDataPlots';
 
+const useStyles = makeStyles((theme) => ({
+  appBarSpacer: { height: '64px'}
+}));
+
+
 export default function TemporaryDrawer() {
+  const classes = useStyles()
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -26,11 +33,12 @@ export default function TemporaryDrawer() {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: 'auto' }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+      <div className={classes.appBarSpacer} />
       <SensorDataPlots />
     </Box>
   );
