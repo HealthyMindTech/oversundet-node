@@ -57,11 +57,35 @@ const MEASUREMENTS = [
       },
     ],
   }
-]
+];
+
+const GRANULARITY = [
+  {
+    label: '1 minute',
+    value: 'PT1M',
+  },
+  {
+    label: '5 minutes',
+    value: 'PT5M',
+  },
+  {
+    label: '1 hour',
+    value: 'PT1H',
+  },
+  {
+    label: '12 hours',
+    value: 'PT12H',
+  },
+  {
+    label: '1 day',
+    value: 'P1D',
+  }
+];
 
 const DATA_URL = 'ASD';
 
 export default {
   MEASUREMENTS,
   DATA_URL,
+  GRANULARITY,
 };

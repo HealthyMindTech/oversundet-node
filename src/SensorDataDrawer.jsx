@@ -5,6 +5,7 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import SensorDataPlots from './SensorDataPlots';
+import { TextField, Typography } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
   appBarSpacer: { height: '64px'}
@@ -33,12 +34,13 @@ export default function TemporaryDrawer() {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: 'auto' }}
+      sx={{ width: 'auto', m: 3 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
     >
       <div className={classes.appBarSpacer} />
+      <Typography variant="h6" gutterBottom>
+        Individual Sensor Data
+      </Typography>
       <SensorDataPlots />
     </Box>
   );

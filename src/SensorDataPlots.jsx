@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
-import { Grid, Paper } from '@mui/material';
+import { Grid, Paper, FormControl, FormLabel, Select, TextField, MenuItem, Button } from '@mui/material';
 // import recharts from 'recharts';
 import SensorDataPlot from './SensorDataPlot';
 import constants from './constants';
@@ -8,33 +8,77 @@ import constants from './constants';
 
 
 export default function SensorDataPlots(props) {
-
+  const [sensorId, setSensorId] = useState('');
+  const [granularity, setGranularity] = useState(constants.GRANULARITY[0].value);
+  const [refresh, setRefresh] = useState(0);
 
   return (
-  <Grid container spacing={3}>
-    {/* Chart */}
-    {constants.MEASUREMENTS.map((measurements, index) => {
-      return(
-      <Grid item xs={12} md={6}>
-        <Paper
-          sx={{
-            p: 2,
-            display: 'flex',
-            flexDirection: 'column',
-            height: 200,
-          }}
-        >
-          <SensorDataPlot
-            measurements={measurements}
-          />
-        </Paper>
-      </Grid>
-      )
-    })}
-    
-    
-    
-  </Grid>)
+    <>
+      <Grid container sx={{ mb: 3 }}>
+          <Grid item>
+            {/* Form to enter the sensor ID (free text) and the granularity of the data (dropdown) */}
+            <FormControl component="fieldset">
+              <FormLabel component="legend" id="sensor-id-label">Sensor ID</FormLabel>
+              <TextField 
+                size="small"
+                id="sensor-id" 
+                label="Sensor ID" 
+                value={sensorId}
+                onChange={(event) => setSensorId(event.target.value)}
+              />
+            </FormControl>
+            <FormControl component="fieldset">
+              <FormLabel component="legend" id="granularity-select-label">Granularity</FormLabel>
+              <Select
+                size='small'
+                labelId="granularity-select-label"
+                id="granularity-select"
+                value={granularity}
+                onChange={(event) => setGranularity(event.target.value)}
+              >
+                {constants.GRANULARITY.map(option => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item>
+            {/* Refresh button */}
+            <Button variant="contained" color="primary" onClick={() => setRefresh(refresh + 1)}>
+              Refresh
+            </Button>
+          </Grid>
+        </Grid>
+    <Grid container spacing={3}>
+      {/* Chart */}
+      {constants.MEASUREMENTS.map((measurements, index) => {
+        return(
+        <Grid item xs={12} md={6}>
+          <Paper
+            sx={{
+              p: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              height: 200,
+            }}
+          >
+            <SensorDataPlot
+              measurements={measurements}
+              granularity={granularity}
+              sensorId={sensorId}
+              refresh={refresh}
+            />
+          </Paper>
+        </Grid>
+        )
+      })}
+      
+      
+      
+    </Grid>
+  </>)
 }
 
 

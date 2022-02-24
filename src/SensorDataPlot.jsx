@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from "react";
 import Chart from "./charts/Chart";
-
+import moment from 'moment';
 
 
 export default function SensorDataPlot (props) {
-  const { measurements } = props;
+  const { measurements, granularity, sensorId, refresh } = props;
   const { subMeasurements, label, unit } = measurements;
 
   const [data, setData] = useState([]);
 
+  // function timeNPeriodsBeforeNow(granularity, numPeriods) {
+  //   const now = moment();
+  //   const periods = [];
+  //   for (let i = 0; i < numPeriods; i++) {
+  //     periods.push(now.subtract(granularity, 'seconds').toDate());
+  //   }
+
+
   useEffect(() => {
     const promises = subMeasurements.map(measurement => {
       const parameters = {
-        // device: '',
+        device: sensorId,
         measure: measurement.name,
-        interval: 'PT1H',
-        fromTime: '2022-02-16T00:00:00Z',
-        toTime: '2022-02-17T00:00:00Z'
+        interval: granularity,
+        fromTime: moment().subtract(moment.duration(granularity) * 24).utc().format('YYYY-MM-DDTHH:mm:ss[Z]'),
+        toTime: moment().utc().format('YYYY-MM-DDTHH:mm:ss[Z]'),
       };
       const url = new URL('https://oversundet-functions-apim.azure-api.net/oversundet-functions/GetOneSensor');
       url.search = new URLSearchParams(parameters).toString();
@@ -30,7 +38,7 @@ export default function SensorDataPlot (props) {
         // Add first measurement data
         const formattedData = data[0].timestamps.map((timestamp, index) => {
           return {
-            name: timestamp,
+            timestamp,
             [subMeasurements[0].name]: data[0].values[index]
           }
         });
@@ -46,8 +54,7 @@ export default function SensorDataPlot (props) {
       .catch(error => {
         console.log(error);
       });
-    }, []);
-  console.log(data)
+    }, [granularity, sensorId, refresh]);
   return (
     <Chart data={data} title={label} unit={unit} measurements={subMeasurements}/>
   )
