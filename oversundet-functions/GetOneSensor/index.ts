@@ -61,10 +61,7 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
                     "Value": {
                         "kind": "numeric",
                         "value": {
-                            "tsx": `$event[${measurement}]`
-                        },
-                        "filter": {
-                            "tsx": `$event[${measurement}].Double != NULL`,
+                            "tsx": `coalesce($event[${measurement}].Double, toDouble($event[${measurement}].Long))`
                         },
                         "aggregation": {
                             "tsx": "avg($value)"
