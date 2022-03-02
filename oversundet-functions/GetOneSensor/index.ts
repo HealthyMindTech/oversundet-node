@@ -12,6 +12,7 @@ const MEASUREMENTS = [
     "PM10",
     "Noise",
     "Humidity",
+    "Pressure",
     "Mood"
 ];
 
