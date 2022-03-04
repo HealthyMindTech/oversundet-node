@@ -63,7 +63,7 @@ const getLastTimeSeen = async function(accessToken: string, timeSeriesId: Array<
             }
         });
 
-        const ProjectedVariables = variables.flatMap((s) => Object.keys(s));
+        const projectedVariables = variables.flatMap((s) => Object.keys(s)).concat(["EventCount"]);
         const inlineVariables = Object.assign({}, ...variables);
 
         let res = await axios.post(TIMESERIES_QUERY_URL, {
@@ -74,9 +74,10 @@ const getLastTimeSeen = async function(accessToken: string, timeSeriesId: Array<
                     "to": today
                 },
                 "interval": "P30D",
-                inlineVariables
+                inlineVariables,
+                projectedVariables: projectedVariables
             },
-            ProjectedVariables
+
         }, { headers });
 
         return Object.assign({}, ...res.data["properties"].map(
