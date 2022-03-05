@@ -63,7 +63,19 @@ const getLastTimeSeen = async function(accessToken: string, timeSeriesId: Array<
             }
         });
 
-        const projectedVariables = variables.flatMap((s) => Object.keys(s)).concat(["EventCount"]);
+        variables.push({
+            LatestFirmware: {
+                "kind": "aggregate",
+                "filter": {
+                    "tsx": "$event['firmware'].String != NULL",
+                },
+                "aggregation": {
+                    "tsx": "last($event['firmware'].String)"
+                }
+            }
+        });
+
+        const projectedVariables = variables.flatMap((s) => Object.keys(s)).concat(["EventCount", "LatestFirmware"]);
         const inlineVariables = Object.assign({}, ...variables);
 
         let res = await axios.post(TIMESERIES_QUERY_URL, {
