@@ -83,9 +83,10 @@ const GRANULARITY = [
 ];
 
 const DATA_URL = 'ASD';
-
-export default {
+const constants = {
   MEASUREMENTS,
   DATA_URL,
   GRANULARITY,
 };
+
+export default constants;

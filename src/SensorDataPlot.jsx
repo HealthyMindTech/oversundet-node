@@ -54,7 +54,7 @@ export default function SensorDataPlot (props) {
       .catch(error => {
         console.log(error);
       });
-    }, [granularity, deviceId, refresh]);
+  }, [granularity, deviceId, refresh, subMeasurements]);
   return (
     <Chart data={data} title={label} unit={unit} measurements={subMeasurements}/>
   )

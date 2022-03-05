@@ -5,7 +5,7 @@ import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recha
 
 
 export default function Chart(props) {
-  const { measurements, title, data, unit } = props;
+  const { measurements, data, unit } = props;
   const theme = useTheme();
 
   return (

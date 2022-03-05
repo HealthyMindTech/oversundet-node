@@ -5,7 +5,6 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import SensorDataPlots from './SensorDataPlots';
-import { TextField, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
