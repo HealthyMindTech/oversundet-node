@@ -14,7 +14,6 @@ import {
   Routes,
   Route,
   Outlet,
-  Link
 } from "react-router-dom";
 
 
@@ -29,7 +28,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import DataPlot from './DataPlot';
-import MoodModal from './MoodDialog';
 import SensorData from './SensorData';
 
 const drawerWidth = 240;
