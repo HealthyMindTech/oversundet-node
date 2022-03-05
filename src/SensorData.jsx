@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import SensorDataPlots from './SensorDataPlots';
 import { TextField, Typography } from '@mui/material';
+import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   appBarSpacer: { height: '64px'}
@@ -13,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function TemporaryDrawer() {
+  const { deviceId } = useParams();
   const classes = useStyles()
   const [state, setState] = React.useState({
     top: false,
@@ -32,7 +34,7 @@ export default function TemporaryDrawer() {
     }
   };
 
-  const list = (anchor) => (
+  return (
     <Box
       sx={{ width: 'auto', m: 3 }}
       role="presentation"
@@ -41,24 +43,24 @@ export default function TemporaryDrawer() {
       <Typography variant="h6" gutterBottom>
         Individual Sensor Data
       </Typography>
-      <SensorDataPlots />
+      <SensorDataPlots urlDeviceId={deviceId} />
     </Box>
   );
 
-  return (
-    <div>
-        <React.Fragment key={'top'}>
-          <IconButton color="inherit" onClick={toggleDrawer('top')}>
-            <DeveloperBoardIcon />
-          </IconButton>
-          <Drawer
-            anchor={'top'}
-            open={state['top']}
-            onClose={toggleDrawer('top', false)}
-          >
-            {list('top')}
-          </Drawer>
-        </React.Fragment>
-    </div>
-  );
+  // return (
+  //   <div>
+  //       <React.Fragment key={'top'}>
+  //         <IconButton color="inherit" onClick={toggleDrawer('top')}>
+  //           <DeveloperBoardIcon />
+  //         </IconButton>
+  //         <Drawer
+  //           anchor={'top'}
+  //           open={state['top']}
+  //           onClose={toggleDrawer('top', false)}
+  //         >
+  //           {list('top')}
+  //         </Drawer>
+  //       </React.Fragment>
+  //   </div>
+  // );
 }

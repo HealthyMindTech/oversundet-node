@@ -9,6 +9,13 @@ import CssBaseline from '@mui/material/CssBaseline';
 // import SignalWifiConnectedNoInternet4Icon from '@mui/icons-material/SignalWifiConnectedNoInternet4';
 // import SignalWifiStatusbar4BarIcon from '@mui/icons-material/SignalWifiStatusbar4Bar';
 // import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+  Link
+} from "react-router-dom";
 
 
 import { Box } from '@mui/material';
@@ -20,9 +27,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Badge from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import DataPlot from './DataPlot';
 import MoodModal from './MoodDialog';
-import SensorDataDrawer from './SensorDataDrawer';
+import SensorData from './SensorData';
 
 const drawerWidth = 240;
 
@@ -123,10 +131,10 @@ function App() {
 
   if (false) { setData() } // To avoid a warning
   return (
+    <Router>
     <div className="App">
       {/* <header className="App-header"> */}
       <ThemeProvider theme={mdTheme}>
-
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar position="absolute" open={false}>
@@ -156,8 +164,11 @@ function App() {
               >
                 Dashboard
               </Typography>
-              <MoodModal open={true}/>
-              <SensorDataDrawer />
+              {/* <MoodModal open={true}/> */}
+              <IconButton color="inherit" onClick={() => {}}>
+                <DeveloperBoardIcon />
+                {/* <Link to="/device">About</Link> */}
+              </IconButton>
               <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <NotificationsIcon />
@@ -178,47 +189,84 @@ function App() {
             }}
           >
             <Toolbar />
-            <Box
-              style={{
-                height: '100%',
-                backgroundImage: `url("${map_image}")`, 
-                position: 'relative', 
-                backgroundRepeatY: 'no-repeat',
-                backgroundSize: '184%',
-                backgroundPositionX: '-820px',
-                backgroundPositionY: '-549px',
-                }}>
-                  <Container>
-                    <Slider
-                      aria-label="Temperature"
-                      defaultValue={0}
-                      valueLabelDisplay="auto"
-                      step={1}
-                      marks
-                      min={0}
-                      max={data['Elsinore'].length - 1}
-                      onChange={(event, value) => {
-                        setSelectedTimestamp(value);
-                      }}
-                      value={selectedTimestamp}
-                    />
-                    <Typography id="discrete-slider-custom" gutterBottom style={{color: 'white', fontWeight: 'bold'}}>
-                      {selectedTimestampText}
-                    </Typography>
-                  </Container>
-                  <Box style={{position: 'absolute', left: '61%', top: '11%'}}>
-                    <DataPlot data={data} name={'Helsingborg'} selectedTimestamp={selectedTimestamp}/>
-                  </Box>
-                  <Box style={{position: 'absolute', left: '14%', top: '11%'}}>
-                    <DataPlot data={data} name={'Elsinore'} selectedTimestamp={selectedTimestamp}/>
-                  </Box>
-            </Box>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route exact path="/" element={<Box
+                  style={{
+                    height: '100%',
+                    backgroundImage: `url("${map_image}")`, 
+                    position: 'relative', 
+                    backgroundRepeatY: 'no-repeat',
+                    backgroundSize: '184%',
+                    backgroundPositionX: '-820px',
+                    backgroundPositionY: '-549px',
+                    }}>
+                      <Container>
+                        <Slider
+                          aria-label="Temperature"
+                          defaultValue={0}
+                          valueLabelDisplay="auto"
+                          step={1}
+                          marks
+                          min={0}
+                          max={data['Elsinore'].length - 1}
+                          onChange={(event, value) => {
+                            setSelectedTimestamp(value);
+                          }}
+                          value={selectedTimestamp}
+                        />
+                        <Typography id="discrete-slider-custom" gutterBottom style={{color: 'white', fontWeight: 'bold'}}>
+                          {selectedTimestampText}
+                        </Typography>
+                      </Container>
+                      <Box style={{position: 'absolute', left: '61%', top: '11%'}}>
+                        <DataPlot data={data} name={'Helsingborg'} selectedTimestamp={selectedTimestamp}/>
+                      </Box>
+                      <Box style={{position: 'absolute', left: '14%', top: '11%'}}>
+                        <DataPlot data={data} name={'Elsinore'} selectedTimestamp={selectedTimestamp}/>
+                      </Box>
+                  </Box>} />
+                <Route path="/data/:deviceId" element={<SensorData />} />
+              </Route>
+            </Routes>
+            
           </Box>
         </Box>
       </ThemeProvider>
     </div>
+    </Router>
   );
 }
+function Layout() {
+  return (
+    <div>
+      {/* A "layout route" is a good place to put markup you want to
+          share across all the pages on your site, like navigation. */}
+      {/* <nav>
+        <ul>
+          {/* <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/device">About</Link>
+          </li>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <Link to="/nothing-here">Nothing Here</Link>
+          </li>
+        </ul>
+      </nav>
 
+      <hr /> */}
+
+      {/* An <Outlet> renders whatever child route is currently active,
+          so you can think about this <Outlet> as a placeholder for
+          the child routes we defined above. */}
+      <Outlet />
+    </div>
+  );
+}
 
 export default App;

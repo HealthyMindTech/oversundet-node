@@ -8,7 +8,8 @@ import constants from './constants';
 
 
 export default function SensorDataPlots(props) {
-  const [sensorId, setSensorId] = useState('');
+  const { urlDeviceId } = props;
+  const [deviceId, setDeviceId] = useState(urlDeviceId);
   const [granularity, setGranularity] = useState(constants.GRANULARITY[0].value);
   const [refresh, setRefresh] = useState(0);
 
@@ -23,8 +24,8 @@ export default function SensorDataPlots(props) {
                 size="small"
                 id="sensor-id" 
                 label="Sensor ID" 
-                value={sensorId}
-                onChange={(event) => setSensorId(event.target.value)}
+                value={deviceId}
+                onChange={(event) => setDeviceId(event.target.value)}
               />
             </FormControl>
             <FormControl component="fieldset">
@@ -67,7 +68,7 @@ export default function SensorDataPlots(props) {
             <SensorDataPlot
               measurements={measurements}
               granularity={granularity}
-              sensorId={sensorId}
+              deviceId={deviceId}
               refresh={refresh}
             />
           </Paper>

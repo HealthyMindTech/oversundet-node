@@ -4,7 +4,7 @@ import moment from 'moment';
 
 
 export default function SensorDataPlot (props) {
-  const { measurements, granularity, sensorId, refresh } = props;
+  const { measurements, granularity, deviceId, refresh } = props;
   const { subMeasurements, label, unit } = measurements;
 
   const [data, setData] = useState([]);
@@ -20,7 +20,7 @@ export default function SensorDataPlot (props) {
   useEffect(() => {
     const promises = subMeasurements.map(measurement => {
       const parameters = {
-        device: sensorId,
+        device: deviceId,
         measure: measurement.name,
         interval: granularity,
         fromTime: moment().subtract(moment.duration(granularity) * 24).utc().format('YYYY-MM-DDTHH:mm:ss[Z]'),
@@ -54,7 +54,7 @@ export default function SensorDataPlot (props) {
       .catch(error => {
         console.log(error);
       });
-    }, [granularity, sensorId, refresh]);
+    }, [granularity, deviceId, refresh]);
   return (
     <Chart data={data} title={label} unit={unit} measurements={subMeasurements}/>
   )
