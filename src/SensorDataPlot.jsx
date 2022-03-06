@@ -77,6 +77,10 @@ export default function SensorDataPlot (props) {
   }, [granularity, deviceId, subMeasurements, refresh]);
   
   return (
-    <Chart data={data} measurementConfig={measurements} measurements={subMeasurements} dateFormat={granularity.dateFormat}/>
+    <Chart
+      data={data}
+      measurementConfig={measurements}
+      measurements={subMeasurements}
+      dateFormat={granularity.dateFormat}/>
   )
 }

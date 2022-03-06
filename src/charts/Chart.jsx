@@ -3,7 +3,6 @@ import { useTheme } from '@mui/material/styles';
 import moment from 'moment';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
-
 const lineColors = ['#3498db', '#1abc9c', '#2ecc71']
 
 export default function Chart(props) {
@@ -11,8 +10,6 @@ export default function Chart(props) {
   const theme = useTheme();
 
   return (
-    <React.Fragment>
-      
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -66,6 +63,5 @@ export default function Chart(props) {
           }
         </LineChart>
       </ResponsiveContainer>
-    </React.Fragment>
   );
 }
