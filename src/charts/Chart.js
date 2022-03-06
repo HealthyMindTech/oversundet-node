@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import moment from 'moment';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
+
+const lineColors = ['#3498db', '#1abc9c', '#2ecc71']
 
 export default function Chart(props) {
   const { measurements, data, measurementConfig, dateFormat } = props;
@@ -21,13 +23,14 @@ export default function Chart(props) {
             left: 24,
           }}
           >
-          {measurements.map(item => {
+          {measurements.map((item, index) => {
             return (
               <Line
                 type="monotone"
                 dataKey={item.name}
-                stroke={theme.palette.primary.main}
+                // stroke={theme.palette.primary.main}
                 key={item.name}
+                stroke={lineColors[index]}
               />
             )
           }
@@ -56,6 +59,9 @@ export default function Chart(props) {
             </Label>
           </YAxis>
           <Tooltip formatter={(value) => `${measurementConfig.formatter(value)} ${measurementConfig.unit}` } labelFormatter={(value) => moment(value).format('MM/DD HH:mm')}/>
+          {measurements.length > 1 &&
+              <Legend />
+          }
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>
