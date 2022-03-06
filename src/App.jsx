@@ -24,6 +24,7 @@ function App() {
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
+    return true;
   };
 
   const handleCloseNavMenu = () => {
@@ -78,7 +79,7 @@ function App() {
                   >
                     <MenuItem key="your-device">
                       <Typography textAlign="center">
-                        <NavLink to="/device/type-here">
+                        <NavLink to="/data/type-here" onClick={handleCloseNavMenu} style={{ color: 'gray' }}>
                           Your Device
                         </NavLink>
                       </Typography>
@@ -86,7 +87,7 @@ function App() {
 
                     <MenuItem key="support">
                       <Typography textAlign="center">
-                        <NavLink to="/support">
+                        <NavLink to="/support" onClick={handleCloseNavMenu} style={{ color: 'gray' }}>
                           Support
                         </NavLink>
                       </Typography>
