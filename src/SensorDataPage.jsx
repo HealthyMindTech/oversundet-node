@@ -8,7 +8,6 @@ import SensorDataPlot from './SensorDataPlot';
 import constants from './constants';
 
 const useStyles = makeStyles((theme) => ({
-  appBarSpacer: { height: '64px' }
 }));
 
 
@@ -23,11 +22,10 @@ export default function SensorDataPage() {
       sx={{ width: 'auto', m: 3 }}
       role="presentation"
     >
-      <div className={classes.appBarSpacer} />
       <Typography variant="h6" gutterBottom>
         Individual Sensor Data
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ mb: 2 }}>
         <Grid item>
           {/* Form to enter the sensor ID (free text) and the granularity of the data (dropdown) */}
           <FormControl component="fieldset">
