@@ -48,18 +48,6 @@ function App() {
                   pr: '24px', // keep right padding when drawer closed
                 }}
               >
-                {/* <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="open drawer"
-                onClick={() => {}}
-                sx={{
-                  marginRight: '36px',
-                  ...(false && { display: 'none' }),
-                }}
-              >
-                <MenuIcon />
-              </IconButton> */}
               <Typography
                 component="h1"
                 variant="h6"
@@ -69,16 +57,6 @@ function App() {
               >
                 Extended Senses
               </Typography>
-              {/* <MoodModal open={true}/> */}
-              {/* <IconButton color="inherit" onClick={() => {}}>
-                <DeveloperBoardIcon />
-                <Link to="/device">About</Link>
-              </IconButton> */}
-              {/* <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton> */}
             </Toolbar>
           </AppBar>
           <Box
