@@ -14,8 +14,8 @@ export default function SensorDataPage() {
       sx={{ width: 'auto', m: 3 }}
       role="presentation"
     >
-      <Typography variant="h6" gutterBottom>
-        Individual Sensor Data
+      <Typography variant="h4" gutterBottom textAlign="center">
+        Your Device
       </Typography>
       <Grid container spacing={2} sx={{ mb: 2 }}>
         <Grid item>

@@ -1,87 +1,145 @@
-import React from 'react';
-import './App.css';
-import { Typography, Box } from '@mui/material/';
-import CssBaseline from '@mui/material/CssBaseline';
-import Map from './Map';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
+import { Typography, Box, Menu, MenuItem, CssBaseline,
+         Container, IconButton, AppBar, Toolbar } from '@mui/material/';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import SensorDataPage from './SensorDataPage';
+import MenuIcon from '@mui/icons-material/Menu';
 
-const drawerWidth = 240;
+import MapPage from './MapPage';
+import SupportPage from './SupportPage';
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
+const NavLink = styled(Link)({
+  textDecoration: 'none',
+  color: 'white'
+});
+
 
 const mdTheme = createTheme();
 
+
 function App() {
+  const [anchorElNav, setAnchorElNav] = useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+  
   return (
-      <div className="App">
-        <ThemeProvider theme={mdTheme}>
-          <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <AppBar position="absolute" open={false}>
-              <Toolbar
-                sx={{
-                  pr: '24px', // keep right padding when drawer closed
-                }}
-              >
-              <Typography
-                component="h1"
-                variant="h6"
-                color="inherit"
-                noWrap
-                sx={{ flexGrow: 1 }}
-              >
-                Extended Senses
-              </Typography>
-            </Toolbar>
+    <ThemeProvider theme={mdTheme}>
+      <Router>
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+          <AppBar position="static">
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="div"
+                  sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                >
+                  <NavLink to="/">Extended Senses</NavLink>
+                </Typography>
+                
+                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleOpenNavMenu}
+                    color="inherit"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  
+                  <Menu
+                    id="menu-appbar"
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'left',
+                    }}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
+                      display: { xs: 'block', md: 'none' },
+                    }}
+                  >
+                    <MenuItem key="your-device">
+                      <Typography textAlign="center">
+                        <NavLink to="/device/type-here">
+                          Your Device
+                        </NavLink>
+                      </Typography>
+                    </MenuItem>
+
+                    <MenuItem key="support">
+                      <Typography textAlign="center">
+                        <NavLink to="/support">
+                          Support
+                        </NavLink>
+                      </Typography>
+                    </MenuItem>
+                  </Menu>
+                </Box>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="div"
+                  sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+                >
+                  <NavLink to="/">
+                    Extended Senses
+                  </NavLink>
+                </Typography>
+
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '12px' }}>
+                  <NavLink to="/data/type-here">
+                    Your Device
+                  </NavLink>
+                </Typography>
+
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '12px' }}>
+                  <NavLink to="/support">
+                    Help
+                  </NavLink>
+                </Typography>
+              </Toolbar>
+            </Container>
           </AppBar>
-          <Box
-            component="main"
-            sx={{
-              backgroundColor: (theme) =>
-                theme.palette.mode === 'light'
-                  ? theme.palette.grey[100]
-                  : theme.palette.grey[900],
-              flexGrow: 1,
-              height: '100vh',
-              overflow: 'auto',
-            }}
-          >
-            <Toolbar />
-            <Router>
-              <Routes>
-                <Route exact path="/" element={<Map/>} />
-                <Route path="/data/:urlDeviceId" element={<SensorDataPage />} />
-              </Routes>
-            </Router>
-          </Box>
-      </Box>
-      </ThemeProvider>
-    </div>
+        </Box>
+        
+        <Box
+          component="main"
+          sx={{
+            backgroundColor: (theme) =>
+            theme.palette.mode === 'light'
+              ? theme.palette.grey[100]
+              : theme.palette.grey[900],
+            flexGrow: 1,
+            height: '100vh',
+            overflow: 'auto',
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<MapPage/>} />
+            <Route path="/data/:urlDeviceId" element={<SensorDataPage />} />
+            <Route path="/support" element={<SupportPage />} />
+          </Routes>
+        </Box>
+      </Router>
+    </ThemeProvider>
   );
 }
 

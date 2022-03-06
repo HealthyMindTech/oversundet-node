@@ -9,7 +9,7 @@ function addHours(date, hours) {
   return newDate;
 }
 
-export default function Map() {
+export default function MapPage() {
   const data = {
     'Elsinore': [
       [1, 3, 9, 7, 9],
@@ -100,7 +100,7 @@ export default function Map() {
                 }}
                 value={selectedTimestamp}
               />
-              <Typography id="discrete-slider-custom" gutterBottom style={{color: 'white', fontWeight: 'bold'}}>
+              <Typography id="discrete-slider-custom" gutterBottom textAlign="center" style={{color: 'white', fontWeight: 'bold'}}>
                 {selectedTimestampText}
               </Typography>
             </Container>
