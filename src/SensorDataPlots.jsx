@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
 import { Grid, Paper, FormControl, Select, TextField, MenuItem, Button } from '@mui/material';
-// import recharts from 'recharts';
 import SensorDataPlot from './SensorDataPlot';
 import constants from './constants';
 
