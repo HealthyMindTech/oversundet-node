@@ -52,7 +52,7 @@ function App() {
                   pr: '24px', // keep right padding when drawer closed
                 }}
               >
-                <IconButton
+                {/* <IconButton
                 edge="start"
                 color="inherit"
                 aria-label="open drawer"
@@ -63,7 +63,7 @@ function App() {
                 }}
               >
                 <MenuIcon />
-              </IconButton>
+              </IconButton> */}
               <Typography
                 component="h1"
                 variant="h6"
@@ -71,18 +71,18 @@ function App() {
                 noWrap
                 sx={{ flexGrow: 1 }}
               >
-                Dashboard
+                Extended Senses
               </Typography>
               {/* <MoodModal open={true}/> */}
-              <IconButton color="inherit" onClick={() => {}}>
+              {/* <IconButton color="inherit" onClick={() => {}}>
                 <DeveloperBoardIcon />
-                {/* <Link to="/device">About</Link> */}
-              </IconButton>
-              <IconButton color="inherit">
+                <Link to="/device">About</Link>
+              </IconButton> */}
+              {/* <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <NotificationsIcon />
                 </Badge>
-              </IconButton>
+              </IconButton> */}
             </Toolbar>
           </AppBar>
           <Box

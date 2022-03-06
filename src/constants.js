@@ -44,7 +44,7 @@ const MEASUREMENTS = [
     ],
   },
   {
-    label: 'Air Particulate Matter',
+    label: 'Air Particles',
     unit: 'µg/m³',
     formatter: (value) => value.toFixed(2),
     subMeasurements: [
@@ -65,6 +65,7 @@ const MEASUREMENTS = [
   {
     label: 'Mood',
     unit: 'Mood Points',
+    formatter: (value) => value.toFixed(2),
     subMeasurements: [
       {
         label: 'Mood',

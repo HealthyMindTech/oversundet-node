@@ -53,9 +53,11 @@ export default function Chart(props) {
                 textAnchor: 'middle',
                 fill: theme.palette.text.primary,
                 ...theme.typography.body1,
+                // fontSize: '0.9rem',
               }}
             >
-              {measurementConfig.unit}
+              {/* {`${measurementConfig.label}: ${measurementConfig.unit}`} */}
+              {measurementConfig.label}
             </Label>
           </YAxis>
           <Tooltip formatter={(value) => `${measurementConfig.formatter(value)} ${measurementConfig.unit}` } labelFormatter={(value) => moment(value).format('MM/DD HH:mm')}/>

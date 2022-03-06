@@ -66,13 +66,13 @@ export default function SensorDataPage() {
         {/* Chart */}
         {constants.MEASUREMENTS.map((measurements, index) => {
           return (
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} lg={4}>
               <Paper
                 sx={{
                   p: 2,
                   display: 'flex',
                   flexDirection: 'column',
-                  height: 200,
+                  height: 300,
                 }}
               >
                 <SensorDataPlot
