@@ -32,10 +32,10 @@ const refreshAll = function(deviceId, subMeasurements, granularity) {
     });
     // Add the rest, if they exist
     for (let i = 1; i < data.length; i++) {
-      subMeasurementFormatter = subMeasurements[i].formatter ? subMeasurements[i].formatter : (value) => value;
+      let subMeasurementFormatter2 = subMeasurements[i].formatter ? subMeasurements[i].formatter : (value) => value;
       const measurementData = data[i];
       measurementData.values.forEach((value, index) => {
-        value = value === null ? null : subMeasurementFormatter(value);
+        value = value === null ? null : subMeasurementFormatter2(value);
         formattedData[index][subMeasurements[i].name] = value;
       });
     }
