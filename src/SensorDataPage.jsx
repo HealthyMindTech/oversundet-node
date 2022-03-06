@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@mui/styles';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import { useParams } from 'react-router-dom';
-import { Grid, Paper, FormControl, Select, TextField, MenuItem, Button } from '@mui/material';
+import { Grid, Paper, FormControl, Select, TextField, MenuItem, Button, Box, Typography } from '@mui/material';
 import SensorDataPlot from './SensorDataPlot';
 import constants from './constants';
 

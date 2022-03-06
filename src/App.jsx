@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { IconButton, Typography, Box } from '@mui/material/';
+import { Typography, Box } from '@mui/material/';
 import CssBaseline from '@mui/material/CssBaseline';
 import Map from './Map';
 import {
@@ -12,10 +12,6 @@ import {
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Badge from '@mui/material/Badge';
-import MenuIcon from '@mui/icons-material/Menu';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import SensorDataPage from './SensorDataPage';
 
 const drawerWidth = 240;
