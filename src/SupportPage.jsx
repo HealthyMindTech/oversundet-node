@@ -34,7 +34,7 @@ export default function SupportPage() {
                      </Typography>
                    </Grid>
                    <Grid item xs={6}>
-                     <img src="assembly_overview.png" />
+                     <img src="assembly_overview.png" alt="Sensor assembly kit"/>
                    </Grid>
                    
                    <Box width="100%" style={{margin: 20}}/>
