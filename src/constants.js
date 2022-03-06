@@ -20,6 +20,16 @@ const MEASUREMENTS = [
     ],
   },
   {
+   label: 'Pressure',
+    unit: 'hPa',
+    subMeasurements: [
+      {
+        label: 'Pressure',
+        name: 'Pressure',
+      }
+    ],
+  },
+  {
     label: 'Noise',
     unit: 'dB',
     subMeasurements: [
