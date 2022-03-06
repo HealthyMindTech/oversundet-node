@@ -82,10 +82,10 @@ const GRANULARITY = [
   }
 ];
 
-const DATA_URL = 'ASD';
+const ONESENSOR_DATA_URL = 'https://extendedsenses-api.azure-api.net/oversundet-functions/GetOneSensor';
 const constants = {
   MEASUREMENTS,
-  DATA_URL,
+  ONESENSOR_DATA_URL,
   GRANULARITY,
 };
 
