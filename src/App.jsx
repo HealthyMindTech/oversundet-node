@@ -28,7 +28,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import DataPlot from './DataPlot';
-import SensorData from './SensorData';
+import SensorDataPage from './SensorDataPage';
 
 const drawerWidth = 240;
 
@@ -224,7 +224,7 @@ function App() {
                         <DataPlot data={data} name={'Elsinore'} selectedTimestamp={selectedTimestamp}/>
                       </Box>
                   </Box>} />
-                <Route path="/data/:deviceId" element={<SensorData />} />
+                <Route path="/data/:urlDeviceId" element={<SensorDataPage />} />
               </Route>
             </Routes>
             

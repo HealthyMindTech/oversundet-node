@@ -1,8 +1,18 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Tooltip } from 'recharts';
 
+function CustomTooltip({ payload, label, active }) {
+  if (active && payload && payload.length > 0) {
+    return (
+      <div className="custom-tooltip">
+        <p className="label">{`${label} : ${payload[0].value}`}</p>
+      </div>
+    );
+  }
 
+  return null;
+}
 
 export default function Chart(props) {
   const { measurements, data, unit } = props;
@@ -20,7 +30,18 @@ export default function Chart(props) {
             bottom: 0,
             left: 24,
           }}
-        >
+          >
+          {measurements.map(item => {
+            return (
+              <Line
+                type="monotone"
+                dataKey={item.name}
+                stroke={theme.palette.primary.main}
+                key={item.name}
+              />
+            )
+          }
+          )}
           <XAxis
             dataKey="timestamp"
             stroke={theme.palette.text.secondary}
@@ -42,17 +63,7 @@ export default function Chart(props) {
               {unit}
             </Label>
           </YAxis>
-          {measurements.map(item => {
-            return (
-              <Line
-                type="monotone"
-                dataKey={item.name}
-                stroke={theme.palette.primary.main}
-                key={item.name}
-              />
-            )
-          }
-          )}
+          <Tooltip content={CustomTooltip} />
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>

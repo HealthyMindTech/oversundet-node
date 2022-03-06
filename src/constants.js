@@ -6,6 +6,7 @@ const MEASUREMENTS = [
       {
         label: 'Temperature',
         name: 'Temperature',
+        formatter: (value) => value.toFixed(2),
       }
     ],
   },
@@ -16,6 +17,7 @@ const MEASUREMENTS = [
       {
         label: 'Humidity',
         name: 'Humidity',
+        formatter: (value) => value.toFixed(2),
       }
     ],
   },
@@ -26,6 +28,7 @@ const MEASUREMENTS = [
       {
         label: 'Pressure',
         name: 'Pressure',
+        formatter: (value) => value.toFixed(0),
       }
     ],
   },
@@ -36,6 +39,7 @@ const MEASUREMENTS = [
       {
         label: 'Noise',
         name: 'Noise',
+        formatter: (value) => value.toFixed(0),
       }
     ],
   },
@@ -46,14 +50,17 @@ const MEASUREMENTS = [
       {
         label: 'PM1',
         name: 'PM1',
+        formatter: (value) => value.toFixed(2),
       },
       {
         label: 'PM2.5',
         name: 'PM2.5',
+        formatter: (value) => value.toFixed(2),
       },
       {
         label: 'PM10',
         name: 'PM10',
+        formatter: (value) => value.toFixed(2),
       },
     ],
   },

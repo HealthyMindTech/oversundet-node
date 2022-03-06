@@ -19,17 +19,23 @@ const refreshAll = function(deviceId, subMeasurements, granularity) {
   });
   
   return Promise.all(promises).then(data => {
+    let subMeasurementFormatter = subMeasurements[0].formatter ? subMeasurements[0].formatter : (x) => x;
+
     // Add first measurement data
     const formattedData = data[0].timestamps.map((timestamp, index) => {
+      let dataValue = data[0].values[index];
+      dataValue = dataValue === null ? null : subMeasurementFormatter(dataValue);
       return {
         timestamp: new Date(timestamp),
-        [subMeasurements[0].name]: data[0].values[index]
+        [subMeasurements[0].name]: dataValue
       }
     });
     // Add the rest, if they exist
     for (let i = 1; i < data.length; i++) {
+      subMeasurementFormatter = subMeasurements[i].formatter ? subMeasurements[i].formatter : (value) => value;
       const measurementData = data[i];
       measurementData.values.forEach((value, index) => {
+        value = value === null ? null : subMeasurementFormatter(value);
         formattedData[index][subMeasurements[i].name] = value;
       });
     }
