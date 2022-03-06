@@ -7,13 +7,8 @@ import { Grid, Paper, FormControl, Select, TextField, MenuItem, Button } from '@
 import SensorDataPlot from './SensorDataPlot';
 import constants from './constants';
 
-const useStyles = makeStyles((theme) => ({
-}));
-
-
 export default function SensorDataPage() {
   const { urlDeviceId } = useParams();
-  const classes = useStyles()
   const [deviceId, setDeviceId] = useState(urlDeviceId);
   const [granularity, setGranularity] = useState(constants.GRANULARITY[0].value);
   const [refresh, setRefresh] = useState(0);
