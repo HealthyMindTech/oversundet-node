@@ -65,7 +65,9 @@ export default function SupportPage() {
                      </Typography>
                    </Grid>
                    <Grid item xs={8}>
-                     <ReactPlayer url="https://youtu.be/7VJ3DxQja5I" controls={true} style={{ margin: 10}}/>
+                     <ReactPlayer url="https://youtu.be/7VJ3DxQja5I" controls={true}
+                                  width="100%"
+                                  style={{ margin: 10}}/>
                    </Grid>
                    <Grid item xs={1} />
 
@@ -76,7 +78,9 @@ export default function SupportPage() {
                      </Typography>
                    </Grid>
                    <Grid item xs={8}>
-                     <ReactPlayer url="https://youtu.be/4Ip-fzK8dGU" controls={true} style={{ margin: 10}}/>
+                     <ReactPlayer url="https://youtu.be/4Ip-fzK8dGU"
+                                  width="100%"
+                                  controls={true} style={{ margin: 10}}/>
                    </Grid>
                    <Grid item xs={1} />
                  </Grid>
