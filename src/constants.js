@@ -2,65 +2,63 @@ const MEASUREMENTS = [
   {
     label: 'Temperature',
     unit: '°C',
+    formatter: (value) => value.toFixed(2),
     subMeasurements: [
       {
         label: 'Temperature',
         name: 'Temperature',
-        formatter: (value) => value.toFixed(2),
       }
     ],
   },
   {
     label: 'Humidity',
     unit: '%',
+    formatter: (value) => value.toFixed(2),
     subMeasurements: [
       {
         label: 'Humidity',
         name: 'Humidity',
-        formatter: (value) => value.toFixed(2),
       }
     ],
   },
   {
    label: 'Pressure',
     unit: 'hPa',
+    formatter: (value) => value.toFixed(0),
     subMeasurements: [
       {
         label: 'Pressure',
         name: 'Pressure',
-        formatter: (value) => value.toFixed(0),
       }
     ],
   },
   {
     label: 'Noise',
     unit: 'dB',
+    formatter: (value) => value.toFixed(0),
     subMeasurements: [
       {
         label: 'Noise',
         name: 'Noise',
-        formatter: (value) => value.toFixed(0),
       }
     ],
   },
   {
     label: 'Air Particulate Matter',
     unit: 'µg/m³',
+    formatter: (value) => value.toFixed(2),
     subMeasurements: [
       {
         label: 'PM1',
         name: 'PM1',
-        formatter: (value) => value.toFixed(2),
       },
       {
         label: 'PM2.5',
         name: 'PM2.5',
-        formatter: (value) => value.toFixed(2),
       },
       {
         label: 'PM10',
         name: 'PM10',
-        formatter: (value) => value.toFixed(2),
       },
     ],
   },

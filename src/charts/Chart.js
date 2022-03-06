@@ -2,20 +2,9 @@ import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Tooltip } from 'recharts';
 
-function CustomTooltip({ payload, label, active }) {
-  if (active && payload && payload.length > 0) {
-    return (
-      <div className="custom-tooltip">
-        <p className="label">{`${label} : ${payload[0].value}`}</p>
-      </div>
-    );
-  }
-
-  return null;
-}
 
 export default function Chart(props) {
-  const { measurements, data, unit } = props;
+  const { measurements, data, measurementConfig } = props;
   const theme = useTheme();
 
   return (
@@ -60,10 +49,10 @@ export default function Chart(props) {
                 ...theme.typography.body1,
               }}
             >
-              {unit}
+              {measurementConfig.config}
             </Label>
           </YAxis>
-          <Tooltip content={CustomTooltip} />
+          <Tooltip formatter={measurementConfig.formatter} />
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>

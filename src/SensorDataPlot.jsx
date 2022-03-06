@@ -23,11 +23,11 @@ const refreshAll = function(deviceId, subMeasurements, granularity) {
 
     // Add first measurement data
     const formattedData = data[0].timestamps.map((timestamp, index) => {
-      let dataValue = data[0].values[index];
-      dataValue = dataValue === null ? null : subMeasurementFormatter(dataValue);
+      //let dataValue = data[0].values[index];
+      //dataValue = dataValue === null ? null : subMeasurementFormatter(dataValue);
       return {
         timestamp: new Date(timestamp),
-        [subMeasurements[0].name]: dataValue
+        [subMeasurements[0].name]: data[0].values[index]
       }
     });
     // Add the rest, if they exist
@@ -35,7 +35,7 @@ const refreshAll = function(deviceId, subMeasurements, granularity) {
       let subMeasurementFormatter2 = subMeasurements[i].formatter ? subMeasurements[i].formatter : (value) => value;
       const measurementData = data[i];
       measurementData.values.forEach((value, index) => {
-        value = value === null ? null : subMeasurementFormatter2(value);
+        //value = value === null ? null : subMeasurementFormatter2(value);
         formattedData[index][subMeasurements[i].name] = value;
       });
     }
@@ -47,17 +47,9 @@ const refreshAll = function(deviceId, subMeasurements, granularity) {
 
 export default function SensorDataPlot (props) {
   const { measurements, granularity, deviceId, refresh } = props;
-  const { subMeasurements, label, unit } = measurements;
+  const { subMeasurements, label } = measurements;
 
   const [data, setData] = useState([]);
-
-  // function timeNPeriodsBeforeNow(granularity, numPeriods) {
-  //   const now = moment();
-  //   const periods = [];
-  //   for (let i = 0; i < numPeriods; i++) {
-  //     periods.push(now.subtract(granularity, 'seconds').toDate());
-  //   }
-
   
   useEffect(() => {
     refreshAll(deviceId, subMeasurements, granularity).then(setData);
@@ -78,6 +70,6 @@ export default function SensorDataPlot (props) {
   }, [granularity, deviceId, subMeasurements, refresh]);
   
   return (
-    <Chart data={data} title={label} unit={unit} measurements={subMeasurements}/>
+    <Chart data={data} measurementConfig={measurements} measurements={subMeasurements}/>
   )
 }
