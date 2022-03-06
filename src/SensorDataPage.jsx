@@ -15,7 +15,7 @@ export default function SensorDataPage() {
       role="presentation"
     >
       <Grid container spacing={10} justifyContent="center">
-        <Grid item xs={8}>
+        <Grid item lg={8} md={10} xs={12}>
           <Paper variant="outlined" style={{padding: 20}}>
             <Typography variant="h4" gutterBottom textAlign="center">
               Your Device

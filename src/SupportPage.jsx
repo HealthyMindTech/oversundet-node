@@ -7,7 +7,7 @@ export default function SupportPage() {
            role="presentation"
          >
            <Grid container spacing={10} justifyContent="center">
-             <Grid item xs={8}>
+             <Grid item lg={8} md={10} xs={12}>
                <Paper variant="outlined" style={{padding: 16}}>
                  <Grid container justifyContent="center" alignItems="center" style={{ padding: 16}}>
                    <Grid item xs={8}>
