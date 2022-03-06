@@ -18,12 +18,11 @@ const refreshAll = function(deviceId, subMeasurements, granularity) {
     return fetch(url).then(
       response => response.json()
     ).then((series) => {
-      let formatter = measurement.formatter || ((x) => x);
       
       return series.timestamps.map((timestamp, idx) => {
         return {
           timestamp: new Date(timestamp),
-          [measurement.name]: formatter(series.values[idx])
+          [measurement.name]: series.values[idx]
         };
       });
     });
