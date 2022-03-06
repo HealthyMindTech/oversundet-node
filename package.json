@@ -26,6 +26,7 @@
     "@testing-library/user-event": "^13.5.0",
     "eslint": "^8.10.0",
     "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-lit-a11y": "^1.1.0-next.1",
     "eslint-pre-commit-hook": "^2.0.7",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.5"
@@ -49,13 +50,15 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "lint": "eslint src --ext .js --ext .jsx"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest",
-      "eslint:recommended"
+      "eslint:recommended",
+      "plugin:lit-a11y/recommended"
     ]
   },
   "browserslist": {
