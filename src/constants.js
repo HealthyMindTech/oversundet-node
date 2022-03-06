@@ -59,7 +59,7 @@ const MEASUREMENTS = [
   },
   {
     label: 'Mood',
-    unit: '',
+    unit: 'Mood Points',
     subMeasurements: [
       {
         label: 'Mood',
