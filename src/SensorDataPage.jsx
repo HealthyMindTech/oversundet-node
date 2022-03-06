@@ -79,7 +79,7 @@ export default function SensorDataPage() {
               >
                 <SensorDataPlot
                   measurements={measurements}
-                  granularity={granularity}
+                  granularity={constants.GRANULARITY.find(option => option.value === granularity)}
                   deviceId={deviceId}
                   refresh={refresh}
                 />

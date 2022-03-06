@@ -78,22 +78,27 @@ const GRANULARITY = [
   {
     label: '1 minute',
     value: 'PT1M',
+    dateFormat: 'HH:mm',
   },
   {
     label: '5 minutes',
     value: 'PT5M',
+    dateFormat: 'HH:mm',
   },
   {
     label: '1 hour',
     value: 'PT1H',
+    dateFormat: 'MM/DD HH:mm',
   },
   {
     label: '12 hours',
     value: 'PT12H',
+    dateFormat: 'MM/DD HH:mm',
   },
   {
     label: '1 day',
     value: 'P1D',
+    dateFormat: 'MM/DD HH:mm',
   }
 ];
 

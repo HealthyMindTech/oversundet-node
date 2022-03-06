@@ -50,7 +50,7 @@ export default function SensorDataPlot (props) {
   const [data, setData] = useState([]);
   
   useEffect(() => {
-    refreshAll(deviceId, subMeasurements, granularity).then(setData);
+    refreshAll(deviceId, subMeasurements, granularity.value).then(setData);
   }, [granularity, deviceId, refresh, subMeasurements]);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function SensorDataPlot (props) {
     // we are removed, but are removed at the time that all requests have come in.
     let cancelToken = {};
     const refreshFunc = () => {
-      refreshAll(deviceId, subMeasurements, granularity).then((data) => {
+      refreshAll(deviceId, subMeasurements, granularity.value).then((data) => {
         if (cancelToken.cancelled) {
           return;
         }
@@ -77,6 +77,6 @@ export default function SensorDataPlot (props) {
   }, [granularity, deviceId, subMeasurements, refresh]);
   
   return (
-    <Chart data={data} measurementConfig={measurements} measurements={subMeasurements}/>
+    <Chart data={data} measurementConfig={measurements} measurements={subMeasurements} dateFormat={granularity.dateFormat}/>
   )
 }

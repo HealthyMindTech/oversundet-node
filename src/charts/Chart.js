@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
+import moment from 'moment';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Tooltip } from 'recharts';
 
 
 export default function Chart(props) {
-  const { measurements, data, measurementConfig } = props;
+  const { measurements, data, measurementConfig, dateFormat } = props;
   const theme = useTheme();
 
   return (
@@ -35,6 +36,8 @@ export default function Chart(props) {
             dataKey="timestamp"
             stroke={theme.palette.text.secondary}
             style={theme.typography.body2}
+            //Format to date and time
+            tickFormatter={(value) => moment(value).format(dateFormat)} // Depends on granularity
           />
           <YAxis
             stroke={theme.palette.text.secondary}
@@ -49,10 +52,10 @@ export default function Chart(props) {
                 ...theme.typography.body1,
               }}
             >
-              {measurementConfig.config}
+              {measurementConfig.unit}
             </Label>
           </YAxis>
-          <Tooltip formatter={measurementConfig.formatter} />
+          <Tooltip formatter={(value) => `${measurementConfig.formatter(value)} ${measurementConfig.unit}` } labelFormatter={(value) => moment(value).format('MM/DD HH:mm')}/>
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>
