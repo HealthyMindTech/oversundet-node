@@ -15,31 +15,30 @@ const refreshAll = function(deviceId, subMeasurements, granularity) {
     const url = new URL(constants.ONESENSOR_DATA_URL);
     url.search = new URLSearchParams(parameters).toString();
     
-    return fetch(url).then(response => response.json());
+    return fetch(url).then(
+      response => response.json()
+    ).then((series) => {
+      let formatter = measurement.formatter || ((x) => x);
+      
+      return series.timestamps.map((timestamp, idx) => {
+        return {
+          timestamp: new Date(timestamp),
+          [measurement.name]: formatter(series.values[idx])
+        };
+      });
+    });
   });
   
   return Promise.all(promises).then(data => {
-    let subMeasurementFormatter = subMeasurements[0].formatter ? subMeasurements[0].formatter : (x) => x;
-
-    // Add first measurement data
-    const formattedData = data[0].timestamps.map((timestamp, index) => {
-      //let dataValue = data[0].values[index];
-      //dataValue = dataValue === null ? null : subMeasurementFormatter(dataValue);
-      return {
-        timestamp: new Date(timestamp),
-        [subMeasurements[0].name]: data[0].values[index]
-      }
-    });
-    // Add the rest, if they exist
-    for (let i = 1; i < data.length; i++) {
-      let subMeasurementFormatter2 = subMeasurements[i].formatter ? subMeasurements[i].formatter : (value) => value;
-      const measurementData = data[i];
-      measurementData.values.forEach((value, index) => {
-        //value = value === null ? null : subMeasurementFormatter2(value);
-        formattedData[index][subMeasurements[i].name] = value;
-      });
+    const res = [];
+    if (data.length === 0) {
+      return res;
     }
-    return formattedData;
+      
+    for (let idx = 0; idx < data[0].length; idx++) {
+      res.push(Object.assign({}, ...data.map(datum => datum[idx])));
+    }
+    return res;
   }).catch(error => {
     console.log(error);
   });
@@ -47,7 +46,7 @@ const refreshAll = function(deviceId, subMeasurements, granularity) {
 
 export default function SensorDataPlot (props) {
   const { measurements, granularity, deviceId, refresh } = props;
-  const { subMeasurements, label } = measurements;
+  const { subMeasurements } = measurements;
 
   const [data, setData] = useState([]);
   
@@ -57,14 +56,23 @@ export default function SensorDataPlot (props) {
 
   useEffect(() => {
     let timer;
+    // Keep a cancel token to ensure that we don't update the view if timer is activated just before
+    // we are removed, but are removed at the time that all requests have come in.
+    let cancelToken = {};
     const refreshFunc = () => {
-      refreshAll(deviceId, subMeasurements, granularity).then(setData);
+      refreshAll(deviceId, subMeasurements, granularity).then((data) => {
+        if (cancelToken.cancelled) {
+          return;
+        }
+        setData(data);
+      });
       timer = setTimeout(refreshFunc, 10000);
     };
 
     timer = setTimeout(refreshFunc, 10000);
 
     return () => {
+      cancelToken.cancelled = true;
       clearTimeout(timer);
     }
   }, [granularity, deviceId, subMeasurements, refresh]);
