@@ -70,7 +70,9 @@ export default function SensorDataPlot (props) {
     refreshFunc();
     return () => {
       cancelToken.cancelled = true;
-      clearTimeout(timer);
+      if (timer) {
+        clearTimeout(timer);
+      }
     }
   }, [granularity, deviceId, subMeasurements, refresh]);
   
