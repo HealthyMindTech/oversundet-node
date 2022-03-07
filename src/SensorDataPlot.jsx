@@ -9,7 +9,7 @@ const refreshAll = function(deviceId, subMeasurements, granularity) {
       device: deviceId,
       measure: measurement.name,
       interval: granularity,
-      fromTime: moment().subtract(moment.duration(granularity) * 24).utc().format('YYYY-MM-DDTHH:mm:ss[Z]'),
+      fromTime: moment().subtract(moment.duration(granularity) * 60).utc().format('YYYY-MM-DDTHH:mm:ss[Z]'),
       toTime: moment().utc().format('YYYY-MM-DDTHH:mm:ss[Z]'),
     };
     const url = new URL(constants.ONESENSOR_DATA_URL);

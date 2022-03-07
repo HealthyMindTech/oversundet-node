@@ -42,6 +42,7 @@ export default function Chart(props) {
           <YAxis
             stroke={theme.palette.text.secondary}
             style={theme.typography.body2}
+            width={30}
           >
             <Label
               angle={270}
@@ -49,7 +50,7 @@ export default function Chart(props) {
               style={{
                 textAnchor: 'middle',
                 fill: theme.palette.text.primary,
-                ...theme.typography.body1,
+                ...theme.typography.body2,
                 // fontSize: '0.9rem',
               }}
             >
@@ -57,7 +58,9 @@ export default function Chart(props) {
               {measurementConfig.label}
             </Label>
           </YAxis>
-          <Tooltip formatter={(value) => `${measurementConfig.formatter(value)} ${measurementConfig.unit}` } labelFormatter={(value) => moment(value).format('MM/DD HH:mm')}/>
+          <Tooltip formatter={
+                     (value) => `${measurementConfig.formatter(value)} ${measurementConfig.unit}` } labelFormatter={(value) => moment(value).format('MM/DD HH:mm')}
+          />
           {measurements.length > 1 &&
               <Legend />
           }
