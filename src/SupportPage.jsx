@@ -30,7 +30,9 @@ export default function SupportPage() {
                        </Link>
                      </Typography>
                      <Typography variant="p" component="p" style={{margin: 10}}>
-                       You are always welcome to ask for any problems with the sensor.
+                       You are always welcome to ask for any problems with the sensor. Here you can find
+                        a <Link target="_blank"
+                                href="discord_guide.pdf"> guide to our discord.</Link>
                      </Typography>
                    </Grid>
                    <Grid item xs={6}>
