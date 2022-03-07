@@ -50,10 +50,6 @@ export default function SensorDataPlot (props) {
   const [data, setData] = useState([]);
   
   useEffect(() => {
-    refreshAll(deviceId, subMeasurements, granularity.value).then(setData);
-  }, [granularity, deviceId, refresh, subMeasurements]);
-
-  useEffect(() => {
     let timer;
     // Keep a cancel token to ensure that we don't update the view if timer is activated just before
     // we are removed, but are removed at the time that all requests have come in.
@@ -71,8 +67,7 @@ export default function SensorDataPlot (props) {
       timer = setTimeout(refreshFunc, 10000);
     };
 
-    timer = setTimeout(refreshFunc, 10000);
-
+    refreshFunc();
     return () => {
       cancelToken.cancelled = true;
       clearTimeout(timer);
