@@ -21,7 +21,7 @@ export default function SensorDataPage() {
               Your Device
             </Typography>
             <Grid container spacing={2} sx={{ mb: 2 }}>
-              <Grid item>
+              <Grid item key="1">
                 {/* Form to enter the sensor ID (free text) and the granularity of the data (dropdown) */}
                 <FormControl component="fieldset">
                   <TextField
@@ -33,7 +33,7 @@ export default function SensorDataPage() {
                   />
                 </FormControl>
               </Grid>
-              <Grid item>
+              <Grid item key="2">
                 <FormControl component="fieldset">
                   <Select
                     size='small'
@@ -50,7 +50,7 @@ export default function SensorDataPage() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item>
+              <Grid item key="3">
                 {/* Refresh button */}
                 <Button variant="contained" color="primary" onClick={() => setRefresh(refresh + 1)}>
                   Refresh
@@ -61,7 +61,7 @@ export default function SensorDataPage() {
               {/* Chart */}
               {constants.MEASUREMENTS.map((measurements, index) => {
                 return (
-                  <Grid item xs={12} md={6} lg={4}>
+                  <Grid item xs={12} md={6} lg={4} key={index}>
                     <Paper
                       sx={{
                         p: 2,

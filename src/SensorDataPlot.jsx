@@ -21,7 +21,7 @@ const refreshAll = function(deviceId, subMeasurements, granularity) {
       
       return series.timestamps.map((timestamp, idx) => {
         return {
-          timestamp: new Date(timestamp),
+          timestamp: timestamp,
           [measurement.name]: series.values[idx]
         };
       });
@@ -59,6 +59,9 @@ export default function SensorDataPlot (props) {
     // we are removed, but are removed at the time that all requests have come in.
     let cancelToken = {};
     const refreshFunc = () => {
+      if(cancelToken.cancelled) {
+        return;
+      }
       refreshAll(deviceId, subMeasurements, granularity.value).then((data) => {
         if (cancelToken.cancelled) {
           return;
