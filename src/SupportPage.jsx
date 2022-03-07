@@ -41,7 +41,7 @@ export default function SupportPage() {
                    
                    <Grid item xs={1} />
                    <Grid item xs={10}>
-                     <Typography variant="p" style={{margin: 10}}>
+                     <Typography component="p" variant="p" style={{ margin: 10 }}>
                        A digital copy of the instruction sheet that was provided to you when you received the sensor,
                        can be found here:
                        <Link target="_blank" style={{ margin: 5 }}
