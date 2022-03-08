@@ -25,8 +25,8 @@ export default function SupportPage() {
                        for assistance. First and foremost we invite you to our discord channel:
                      </Typography>
                      <Typography component="p" variant="p" style={{margin: 10}}>
-                       <Link href="https://discord.gg/vBRs9AGPuG" target="_blank">
-                         https://discord.gg/VN56WKJr
+                       <Link href="https://discord.gg/uSFYNESFke" target="_blank">
+                         https://discord.gg/uSFYNESFke
                        </Link>
                      </Typography>
                      <Typography variant="p" component="p" style={{margin: 10}}>
