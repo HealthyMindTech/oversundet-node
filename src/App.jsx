@@ -10,6 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MapPage from './MapPage';
 import SupportPage from './SupportPage';
 import HomePage from './HomePage';
+import MoodPage from './MoodPage';
 
 const NavLink = styled(Link)({
   textDecoration: 'none',
@@ -145,6 +146,7 @@ function App() {
             <Route path="/data" element={<MapPage/>} />
             <Route path="/data/:urlDeviceId" element={<SensorDataPage />} />
             <Route path="/support" element={<SupportPage />} />
+            <Route path="/mood" element={<MoodPage />} />
           </Routes>
         </Box>
       </Router>
