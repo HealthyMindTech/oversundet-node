@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import MapPage from './MapPage';
 import SupportPage from './SupportPage';
+import HomePage from './HomePage';
 
 const NavLink = styled(Link)({
   textDecoration: 'none',
@@ -106,6 +107,12 @@ function App() {
                 </Typography>
 
                 <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '12px' }}>
+                  <NavLink to="/data">
+                    Data
+                  </NavLink>
+                </Typography>
+
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '12px' }}>
                   <NavLink to="/data/type-here">
                     Your Device
                   </NavLink>
@@ -134,7 +141,8 @@ function App() {
           }}
         >
           <Routes>
-            <Route path="/" element={<MapPage/>} />
+            <Route path="/" element={<HomePage/>} />
+            <Route path="/data" element={<MapPage/>} />
             <Route path="/data/:urlDeviceId" element={<SensorDataPage />} />
             <Route path="/support" element={<SupportPage />} />
           </Routes>
