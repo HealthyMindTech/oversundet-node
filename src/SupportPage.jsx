@@ -77,6 +77,19 @@ export default function SupportPage() {
                    <Grid item xs={1}></Grid>
                    <Grid item xs={2}>
                      <Typography component="h6" variant="h6" style={{ margin: 10}}>
+                       Adding the antenna
+                     </Typography>
+                   </Grid>
+                   <Grid item xs={8}>
+                     <ReactPlayer url="https://youtu.be/gPcl6khKbcY" controls={true}
+                                  width="100%"
+                                  style={{ margin: 10}}/>
+                   </Grid>
+                   <Grid item xs={1} />
+
+                   <Grid item xs={1}></Grid>
+                   <Grid item xs={2}>
+                     <Typography component="h6" variant="h6" style={{ margin: 10}}>
                        Add to scaffold
                      </Typography>
                    </Grid>
@@ -97,6 +110,19 @@ export default function SupportPage() {
                      <ReactPlayer url="https://youtu.be/4Ip-fzK8dGU"
                                   width="100%"
                                   controls={true} style={{ margin: 10}}/>
+                   </Grid>
+                   <Grid item xs={1} />
+
+                   <Grid item xs={1}></Grid>
+                   <Grid item xs={2}>
+                     <Typography component="h6" variant="h6" style={{ margin: 10}}>
+                       Placement outdoors
+                     </Typography>
+                   </Grid>
+                   <Grid item xs={8}>
+                     <ReactPlayer url="https://youtu.be/p7mSGZBgEac" controls={true}
+                                  width="100%"
+                                  style={{ margin: 10}}/>
                    </Grid>
                    <Grid item xs={1} />
                  </Grid>
