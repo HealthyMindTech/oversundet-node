@@ -1,6 +1,8 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import { DefaultAzureCredential } from '@azure/identity';
 import axios, { AxiosResponse } from 'axios';
+import { EventEmitter } from 'events';
+import Bottleneck from 'bottleneck';
 
 const TIMESERIES_FQDN = "858c82fb-226a-46bb-89c0-5bb7c278aa73.env.timeseries.azure.com";
 const TIMESERIES_QUERY_URL = `https://${TIMESERIES_FQDN}/timeseries/query?api-version=2020-07-31`;
@@ -44,63 +46,72 @@ const getLastTimeSeen = async function(accessToken: string, timeSeriesId: Array<
         Authorization: `Bearer ${accessToken}`
     };
 
-    try {
-        const today = new Date();
-        const today_minus_30 = new Date();
-        today_minus_30.setDate(today.getDate() - 30);
+    const today = new Date();
+    const today_minus_30 = new Date();
+    today_minus_30.setDate(today.getDate() - 30);
 
-        const variables = MEASUREMENTS.map((measure: string) => {
-            return {
-                [`Last${measure}Timestamp`]: {
-                    "kind": "aggregate",
-                    "filter": {
-                        "tsx": `coalesce($event['${measure}'].Double, toDouble($event['${measure}'].Long)) != NULL`,
-                    },
-                    "aggregation": {
-                        "tsx": "last($event.$ts)"
-                    }
-                }
-            }
-        });
-
-        variables.push({
-            LatestFirmware: {
+    const variables = MEASUREMENTS.map((measure: string) => {
+        return {
+            [`Last${measure}Timestamp`]: {
                 "kind": "aggregate",
                 "filter": {
-                    "tsx": "$event['firmware'].String != NULL",
+                    "tsx": `coalesce($event['${measure}'].Double, toDouble($event['${measure}'].Long)) != NULL`,
                 },
                 "aggregation": {
-                    "tsx": "last($event['firmware'].String)"
+                    "tsx": "last($event.$ts)"
                 }
             }
-        });
+        }
+    });
 
-        const projectedVariables = variables.flatMap((s) => Object.keys(s)).concat(["EventCount", "LatestFirmware"]);
-        const inlineVariables = Object.assign({}, ...variables);
-
-        let res = await axios.post(TIMESERIES_QUERY_URL, {
-            "aggregateSeries": {
-                timeSeriesId,
-                "searchSpan": {
-                    "from": today_minus_30,
-                    "to": today
-                },
-                "interval": "P30D",
-                inlineVariables,
-                projectedVariables: projectedVariables
+    variables.push({
+        LatestFirmware: {
+            "kind": "aggregate",
+            "filter": {
+                "tsx": "$event['firmware'].String != NULL",
             },
-
-        }, { headers });
-
-        return Object.assign({}, ...res.data["properties"].map(
-            (x) => {
-                return { [x["name"]]: x["values"][1] }
+            "aggregation": {
+                "tsx": "last($event['firmware'].String)"
             }
-        ));
-    } catch (e) {
-        console.log(e.response.data);
-        throw e;
-    }
+        }
+    });
+
+    const projectedVariables = variables.flatMap((s) => Object.keys(s)).concat(["EventCount", "LatestFirmware"]);
+    const inlineVariables = Object.assign({}, ...variables);
+    let retries = 5;
+
+    let res;
+    do {
+        try {
+            res = await axios.post(TIMESERIES_QUERY_URL, {
+                "aggregateSeries": {
+                    timeSeriesId,
+                    "searchSpan": {
+                        "from": today_minus_30,
+                        "to": today
+                    },
+                    "interval": "P30D",
+                    inlineVariables,
+                    projectedVariables: projectedVariables
+                },
+
+            }, { headers });
+            break;
+        } catch (e) {
+            console.log(e.response.data);
+            if (retries > 0) {
+                retries--;
+            } else {
+                throw e;
+            }
+        }
+    } while (true);
+
+    return Object.assign({}, ...res.data["properties"].map(
+        (x) => {
+            return { [x["name"]]: x["values"][1] }
+        }
+    ));
 }
 
 const httpTrigger: AzureFunction = async function(context: Context, req: HttpRequest): Promise<void> {
@@ -110,16 +121,16 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
 
     let res = {};
 
-    for await (const l of getSensors(accessToken)) {
-        res[l[0]] = getLastTimeSeen(accessToken, l);
-    }
+    const limiter = new Bottleneck({
+        minTime: 200,
+        maxConcurrent: 10
+    });
 
-    for (const l of Object.keys(res)) {
-        res[l] = await res[l];
+    for await (const l of getSensors(accessToken)) {
+        res[l[0]] = await limiter.schedule(() => getLastTimeSeen(accessToken, l));
     }
 
     context.res = {
-        // status: 200, /* Defaults to 200 */
         body: res
     };
 
