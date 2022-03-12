@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import map_image from './map.png';
-import { Box, Slider, Container, Typography } from '@mui/material';
-import DataPlot from './DataPlot';
+import { Box, Slider, Container, Typography, Grid, IconButton } from '@mui/material';
+import { PlayArrow } from '@mui/icons-material';
+// import DataPlot from './DataPlot';
+import LogoPlot from './LogoPlot';
 
 function addHours(date, hours) {
   const newDate = new Date(date);
@@ -73,6 +75,19 @@ export default function MapPage() {
     startDateTime: new Date(2022, 2, 1, 0, 0, 0, 0),
   };
   const [selectedTimestamp, setSelectedTimestamp] = useState(0);
+  const [playTimelineTimer, setPlayTimelineTimer] = useState(null);
+    
+  const handlePlayButtonClick = useCallback(() => {
+    if (playTimelineTimer) {
+      clearInterval(playTimelineTimer);
+      setPlayTimelineTimer(null);
+    } else {
+      setPlayTimelineTimer(setInterval(() => {
+        console.log('playTimelineTimer');
+        setSelectedTimestamp(prevTime => prevTime >= data['Elsinore'].length - 1? 0 : prevTime + 1);
+      }, 1000));
+    }
+  }, [playTimelineTimer]);
 
   const selectedTimestampText = addHours(data.startDateTime , selectedTimestamp).toLocaleString();
   
@@ -103,13 +118,20 @@ export default function MapPage() {
               <Typography id="discrete-slider-custom" gutterBottom textAlign="center" style={{color: 'white', fontWeight: 'bold'}}>
                 {selectedTimestampText}
               </Typography>
+              <IconButton>
+                <PlayArrow onClick={handlePlayButtonClick} style={{"color":"white"}}/>
+              </IconButton>
             </Container>
-            <Box style={{position: 'absolute', left: '61%', top: '11%'}}>
-              <DataPlot data={data} name={'Helsingborg'} selectedTimestamp={selectedTimestamp}/>
-            </Box>
-            <Box style={{position: 'absolute', left: '14%', top: '11%'}}>
-              <DataPlot data={data} name={'Elsinore'} selectedTimestamp={selectedTimestamp}/>
-            </Box>
+            <Grid container style={{justifyContent: 'space-around'}}>
+              <Grid item sx={{m : 2}}>
+                <LogoPlot data={data} name={'Elsinore'} selectedTimestamp={selectedTimestamp} />
+                {/* <DataPlot data={data} name={'Elsinore'} selectedTimestamp={selectedTimestamp}/> */}
+              </Grid>
+              <Grid item sx={{m: 2}}>
+                <LogoPlot data={data} name={'Helsingborg'} selectedTimestamp={selectedTimestamp} />
+                {/* <DataPlot data={data} name={'Helsingborg'} selectedTimestamp={selectedTimestamp}/> */}
+              </Grid>
+            </Grid>
           </Box>
          );
 }
