@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import map_image from './map.png';
+import map_image from './21.jpg';
 import { Box, Slider, Container, Typography, Grid, IconButton } from '@mui/material';
 import { PlayArrow } from '@mui/icons-material';
 // import DataPlot from './DataPlot';
@@ -96,10 +96,9 @@ export default function MapPage() {
               height: '100%',
               backgroundImage: `url("${map_image}")`, 
               position: 'relative', 
-              backgroundRepeatY: 'no-repeat',
-              backgroundSize: '184%',
-              backgroundPositionX: '-820px',
-              backgroundPositionY: '-549px',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+              backgroundAttachment: 'fixed',
             }}>
             <Container>
               <Slider

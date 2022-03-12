@@ -42,8 +42,8 @@ export default function DataPlot(props) {
   // };
   return (
     <Card style={{
-        width: '350px', 
-        height: '350px', 
+        width: '300px', 
+        height: '300px', 
         backgroundColor: 'rgba(255, 255, 255, 1)', 
       }}>
       <CardContent>
@@ -51,7 +51,7 @@ export default function DataPlot(props) {
           {name}
         </Typography>
 
-        <svg width="300" height="200" viewBox="0 0 1920 1109" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="250" height="175" viewBox="0 0 1920 1109" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="1108.45" height="1920" transform="translate(1920) rotate(90)" fill="white"/>
           <rect x="-1.7998" width="1921.8" height="220.937" fill="url(#paint0_linear_237_1649)"/>
           <rect x="-1.7998" y="220.937" width="1921.8" height="220.937" fill="url(#paint1_linear_237_1649)"/>
