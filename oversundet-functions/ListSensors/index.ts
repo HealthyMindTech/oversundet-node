@@ -122,12 +122,16 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
     let res = {};
 
     const limiter = new Bottleneck({
-        minTime: 200,
-        maxConcurrent: 10
+        minTime: 50,
+        maxConcurrent: 5
     });
 
     for await (const l of getSensors(accessToken)) {
-        res[l[0]] = await limiter.schedule(() => getLastTimeSeen(accessToken, l));
+        res[l[0]] = limiter.schedule(() => getLastTimeSeen(accessToken, l));
+    }
+
+    for (const l of Object.keys(res)) {
+        res[l] = await res[l];
     }
 
     context.res = {

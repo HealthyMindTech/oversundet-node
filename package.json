@@ -27,6 +27,7 @@
     "eslint": "^8.10.0",
     "eslint-config-react-app": "^7.0.0",
     "eslint-plugin-lit-a11y": "^1.1.0-next.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-pre-commit-hook": "^2.0.7",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.5"
@@ -58,7 +59,8 @@
       "react-app",
       "react-app/jest",
       "eslint:recommended",
-      "plugin:lit-a11y/recommended"
+      "plugin:lit-a11y/recommended",
+      "plugin:react-hooks/recommended"
     ]
   },
   "browserslist": {
