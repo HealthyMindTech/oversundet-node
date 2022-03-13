@@ -14,7 +14,7 @@ const GOOD_MOODS = {
     "sad": 0,
     "2": 2,
     "1": 1,
-    "0": 0
+    "0": 0,
 };
 
 
@@ -26,9 +26,10 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
                 "error": "Only takes Post method"
             }
         }
+        return;
     };
 
-    const moodParam: string = req.body.mood || '';
+    const moodParam: string = String(req.body.mood || '');
     const cityParam: string = (req.body.city || '').toLowerCase();
 
     const mood = GOOD_MOODS[moodParam.toLowerCase()];
@@ -39,6 +40,7 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
                 "error": `Didn't recognize mood: ${moodParam}`
             }
         };
+        return;
     };
 
 
@@ -49,6 +51,7 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
                 "error": `Unknown city: ${cityParam}`
             }
         };
+        return;
     }
 
 
