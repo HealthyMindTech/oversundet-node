@@ -35,6 +35,9 @@ export default function MoodPage() {
       } else {
         setStatusMsg("Error sending mood");
       }
+    }).catch(error => {
+      console.log(error);
+      setStatusMsg("Error sending mood");
     });
   }, [mood, city]);
 
