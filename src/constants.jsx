@@ -104,9 +104,11 @@ const GRANULARITY = [
 ];
 
 const ONESENSOR_DATA_URL = 'https://extendedsenses-api.azure-api.net/oversundet-functions/GetOneSensor';
+const ONESENSOR_POST_MESSAGE_URL = 'https://extendedsenses-api.azure-api.net/oversundet-functions/PostMessage'
 const constants = {
   MEASUREMENTS,
   ONESENSOR_DATA_URL,
+  ONESENSOR_POST_MESSAGE_URL,
   GRANULARITY,
 };
 

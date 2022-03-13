@@ -16,41 +16,67 @@ export default function SupportPage() {
                      </Typography>
                    </Grid>
                  </Grid>
+                 <Box width="100%" style={{margin: 20}}/>
                  <Grid container justifyContent="center">
-                   <Grid item xs={1} />
-                   <Grid item xs={5}>
+                   <Grid item xs={10}>
                      <Typography component="p" variant="p" style={{ margin: 10 }}>
                        Welcome to the support page for Extended Senses sensor collection.
                        If you are here we presume you have been given one of our sensors and are looking
-                       for assistance. First and foremost we invite you to our discord channel:
+                       for assistance.
                      </Typography>
                      <Typography component="p" variant="p" style={{margin: 10}}>
-                       <Link href="https://discord.gg/uSFYNESFke" target="_blank">
+                     First and foremost we invite you to our Discord channel: <Link href="https://discord.gg/uSFYNESFke" target="_blank">
                          https://discord.gg/uSFYNESFke
                        </Link>
                      </Typography>
                      <Typography variant="p" component="p" style={{margin: 10}}>
                        You are always welcome to ask for any problems with the sensor. Here you can find
                         a <Link target="_blank"
-                                href="discord_guide.pdf"> guide to our discord.</Link>
+                                href="discord_guide.pdf"> guide to our Discord.</Link>
                      </Typography>
                    </Grid>
-                   <Grid item xs={6}>
-                     <img src="assembly_overview.png" alt="Sensor assembly kit"/>
+                   
+                   
+                   <Box width="100%" style={{margin: 20}}/>
+                   
+                   <Grid item xs={12}>
+                     <Typography variant="h5" textAlign="center">
+                       Assembly and Setup Guide
+                     </Typography>
                    </Grid>
                    
                    <Box width="100%" style={{margin: 20}}/>
                    
-                   <Grid item xs={1} />
                    <Grid item xs={10}>
                      <Typography component="p" variant="p" style={{ margin: 10 }}>
                        A digital copy of the instruction sheet that was provided to you when you received the sensor,
                        can be found here:
                        <Link target="_blank" style={{ margin: 5 }}
-                             href="instruction_guide.pdf">Instructions</Link>
+                             href="instruction_guide.pdf">Instructions for assembly and setup</Link>
                      </Typography>
                    </Grid>
-                   <Grid item xs={1} />
+                   <Box width="100%" style={{margin: 10}}/>
+                   <Grid item xs={2}>
+                     <img src="assembly_overview_p1.png" alt="Sensor assembly kit" height="150px"/>
+                   </Grid>
+                   <Grid item xs={2}>
+                     <img src="assembly_overview_p2.png" alt="Sensor assembly kit" height="150px"/>
+                   </Grid>
+                   <Box width="100%" style={{margin: 10}}/>
+                   <Grid item xs={10}>
+                     <Typography component="p" variant="p" style={{ margin: 10 }}>
+                       The antenna that came into your kit might look a bit different than the one in the assembly instructions. 
+                       The asembly instructions are the same nevertheless. 
+                     </Typography>
+                   </Grid>
+                   <Box width="100%" style={{margin: 10}}/>
+                   <Grid item xs={10}>
+                     <Typography component="p" variant="p" style={{ margin: 10 }}>
+                       The 3d printed scaffold that came in the kit might differ. In the videos below you will see some examples
+                       and instructions on how to assemble. 
+                     </Typography>
+                   </Grid>
+                   
                    
                    <Box width="100%" style={{margin: 20}}/>
                    
@@ -59,6 +85,7 @@ export default function SupportPage() {
                        Instruction Videos
                      </Typography>
                    </Grid>
+                   <Box width="100%" style={{margin: 20}}/>
                    
                    <Grid item xs={1}></Grid>
                    <Grid item xs={2}>
@@ -125,6 +152,46 @@ export default function SupportPage() {
                                   style={{ margin: 10}}/>
                    </Grid>
                    <Grid item xs={1} />
+
+
+                   <Box width="100%" style={{margin: 20}}/>
+
+                   <Grid item xs={12}>
+                     <Typography variant="h5" textAlign="center">
+                       3D Printable parts
+                     </Typography>
+                   </Grid>
+
+                   <Box width="100%" style={{margin: 20}}/>
+
+                   <Grid item xs={10}>
+                    <Typography component="p" variant="p" style={{margin: 10}}>
+                          Bee hive enclosure: <Link href="https://www.thingiverse.com/thing:5276204" target="_blank">
+                              https://www.thingiverse.com/thing:5276204
+                        </Link>
+                    </Typography>
+
+                    <Typography component="p" variant="p" style={{margin: 10}}>
+                            Round Casing: <Link href="https://www.thingiverse.com/thing:5276189" target="_blank">
+                              https://www.thingiverse.com/thing:5276189
+                        </Link>
+                    </Typography>
+
+                    <Typography component="p" variant="p" style={{margin: 10}}>
+                            Blocky Enclosure: <Link href="hhttps://www.thingiverse.com/thing:5212085" target="_blank">
+                              https://www.thingiverse.com/thing:5212085
+                        </Link>
+                    </Typography>
+
+                    <Typography component="p" variant="p" style={{margin: 10}}>
+                            H22 Blocky Enclosure: <Link href="https://www.thingiverse.com/thing:5278318" target="_blank">
+                            https://www.thingiverse.com/thing:5278318
+                        </Link>
+                    </Typography>
+                    
+                   </Grid>
+
+
                  </Grid>
                </Paper>
              </Grid>

@@ -11,7 +11,6 @@ function addHours(date, hours) {
   return newDate;
 }
 
-export default function MapPage() {
   const data = {
     'Elsinore': [
       [1, 3, 9, 7, 9],
@@ -74,6 +73,8 @@ export default function MapPage() {
     // Start datetime is March 1st, 2022, midnight
     startDateTime: new Date(2022, 2, 1, 0, 0, 0, 0),
   };
+export default function MapPage() {
+
   const [selectedTimestamp, setSelectedTimestamp] = useState(0);
   const [playTimelineTimer, setPlayTimelineTimer] = useState(null);
     
