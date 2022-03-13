@@ -125,6 +125,46 @@ export default function SupportPage() {
                                   style={{ margin: 10}}/>
                    </Grid>
                    <Grid item xs={1} />
+
+
+                   <Box width="100%" style={{margin: 20}}/>
+
+                   <Grid item xs={12}>
+                     <Typography variant="h5" textAlign="center">
+                       3D Printable parts
+                     </Typography>
+                   </Grid>
+
+                   <Box width="100%" style={{margin: 20}}/>
+
+                   <Grid item xs={10}>
+                    <Typography component="p" variant="p" style={{margin: 10}}>
+                          Bee hive enclosure: <Link href="https://www.thingiverse.com/thing:5276204" target="_blank">
+                              https://www.thingiverse.com/thing:5276204
+                        </Link>
+                    </Typography>
+
+                    <Typography component="p" variant="p" style={{margin: 10}}>
+                            Round Casing: <Link href="https://www.thingiverse.com/thing:5276189" target="_blank">
+                              https://www.thingiverse.com/thing:5276189
+                        </Link>
+                    </Typography>
+
+                    <Typography component="p" variant="p" style={{margin: 10}}>
+                            Blocky Enclosure: <Link href="hhttps://www.thingiverse.com/thing:5212085" target="_blank">
+                              https://www.thingiverse.com/thing:5212085
+                        </Link>
+                    </Typography>
+
+                    <Typography component="p" variant="p" style={{margin: 10}}>
+                            H22 Blocky Enclosure: <Link href="https://www.thingiverse.com/thing:5278318" target="_blank">
+                            https://www.thingiverse.com/thing:5278318
+                        </Link>
+                    </Typography>
+                    
+                   </Grid>
+
+
                  </Grid>
                </Paper>
              </Grid>
