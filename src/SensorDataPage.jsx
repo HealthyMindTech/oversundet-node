@@ -3,12 +3,32 @@ import { useParams } from 'react-router-dom';
 import { Grid, Paper, FormControl, Select, TextField, MenuItem, Button, Box, Typography } from '@mui/material';
 import SensorDataPlot from './SensorDataPlot';
 import constants from './constants';
+import { GithubPicker } from 'react-color';
 
 export default function SensorDataPage() {
   const { urlDeviceId } = useParams();
   const [deviceId, setDeviceId] = useState(urlDeviceId);
   const [granularity, setGranularity] = useState(constants.GRANULARITY[0].value);
   const [refresh, setRefresh] = useState(0);
+
+  const colorChanged = (color) => {
+    const rgb = color.rgb;
+    const message = {
+      "red": rgb.r,
+      "green": rgb.g,
+      "blue": rgb.b,
+      "light_time": 1500,
+      "pause_time": 200,
+      
+    };
+
+    const queryDevice = encodeURIComponent(deviceId);
+    const jsonMessage = encodeURIComponent(JSON.stringify(message));
+    fetch(
+      `${constants.ONESENSOR_POST_MESSAGE_URL}?device=${queryDevice}&message=${jsonMessage}`,
+      { method: 'POST' }
+    );
+  };
   return (
     <Box
       sx={{ width: 'auto', m: 3 }}
@@ -21,7 +41,7 @@ export default function SensorDataPage() {
               Your Device
             </Typography>
             <Grid container spacing={2} sx={{ mb: 2 }}>
-              <Grid item key="1">
+              <Grid item>
                 {/* Form to enter the sensor ID (free text) and the granularity of the data (dropdown) */}
                 <FormControl component="fieldset">
                   <TextField
@@ -33,7 +53,7 @@ export default function SensorDataPage() {
                   />
                 </FormControl>
               </Grid>
-              <Grid item key="2">
+              <Grid item>
                 <FormControl component="fieldset">
                   <Select
                     size='small'
@@ -50,12 +70,25 @@ export default function SensorDataPage() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item key="3">
+              <Grid item>
                 {/* Refresh button */}
                 <Button variant="contained" color="primary" onClick={() => setRefresh(refresh + 1)}>
                   Refresh
                 </Button>
               </Grid>
+              <Grid item xs={5} />
+              <Grid item xs={3}>
+                <Typography style={{marginTop: 5}} variant="subtitle1">
+                  Send color to device
+                </Typography>
+                <Box>
+                  <GithubPicker
+                    width="220px" onChange={colorChanged}
+                    colors={['#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB']}
+                  />
+                </Box>
+              </Grid>
+              
             </Grid>
             <Grid container spacing={3}>
               {/* Chart */}
