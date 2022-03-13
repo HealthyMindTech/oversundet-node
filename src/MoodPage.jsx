@@ -25,9 +25,6 @@ export default function MoodPage() {
     };
     fetch(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify(moodEvent)
     }).then(response => {
       if (response.ok) {
