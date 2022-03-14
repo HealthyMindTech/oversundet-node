@@ -76,8 +76,9 @@ export default function SensorDataPage() {
                   Refresh
                 </Button>
               </Grid>
-              <Grid item xs={5} />
-              <Grid item xs={3}>
+            </Grid>
+            <Grid container>
+              <Grid item xs={12} md={3}>
                 <Typography style={{marginTop: 5}} variant="subtitle1">
                   Send color to device
                 </Typography>
