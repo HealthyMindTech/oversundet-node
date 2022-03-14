@@ -12,7 +12,7 @@ function addHours(date, hours) {
 }
 
   const data = {
-    'Elsinore': [
+    'Helsingør': [
       [1, 3, 9, 7, 9],
       [2, 4, 8, 8, 1],
       [3, 5, 7, 9, 2],
@@ -85,7 +85,7 @@ export default function MapPage() {
     } else {
       setPlayTimelineTimer(setInterval(() => {
         console.log('playTimelineTimer');
-        setSelectedTimestamp(prevTime => prevTime >= data['Elsinore'].length - 1? 0 : prevTime + 1);
+        setSelectedTimestamp(prevTime => prevTime >= data['Helsingør'].length - 1? 0 : prevTime + 1);
       }, 1000));
     }
   }, [playTimelineTimer]);
@@ -109,7 +109,7 @@ export default function MapPage() {
                 step={1}
                 marks
                 min={0}
-                max={data['Elsinore'].length - 1}
+                max={data['Helsingør'].length - 1}
                 onChange={(event, value) => {
                   setSelectedTimestamp(value);
                 }}
@@ -124,7 +124,7 @@ export default function MapPage() {
             </Container>
             <Grid container style={{justifyContent: 'space-around'}}>
               <Grid item sx={{m : 2}}>
-                <LogoPlot data={data} name={'Elsinore'} selectedTimestamp={selectedTimestamp} />
+                <LogoPlot data={data} name="Helsingør" selectedTimestamp={selectedTimestamp} />
                 {/* <DataPlot data={data} name={'Elsinore'} selectedTimestamp={selectedTimestamp}/> */}
               </Grid>
               <Grid item sx={{m: 2}}>

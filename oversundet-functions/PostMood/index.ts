@@ -68,7 +68,7 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
     eventDataBatch.tryAdd({
         body: {
             "deviceId": `web-${cityParam}`,
-            "mood": mood
+            "Mood": mood
         }
     });
 
