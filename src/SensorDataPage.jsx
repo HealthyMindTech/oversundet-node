@@ -17,7 +17,7 @@ export default function SensorDataPage() {
       "red": rgb.r,
       "green": rgb.g,
       "blue": rgb.b,
-      "light_time": 1500,
+      "light_time": 800,
       "pause_time": 200,
       
     };
@@ -79,7 +79,7 @@ export default function SensorDataPage() {
               <Grid item xs={5} />
               <Grid item xs={3}>
                 <Typography style={{marginTop: 5}} variant="subtitle1">
-                  Send color to device
+                  Send color to {deviceId}
                 </Typography>
                 <Box>
                   <GithubPicker
