@@ -73,7 +73,7 @@ export default function MoodPage() {
         value={city}
         onChange={(event) => setCity(event.target.value)}
       >
-          <FormControlLabel value="elsinore" control={<Radio />} label="Elsinore" />
+          <FormControlLabel value="elsinore" control={<Radio />} label="Helsingør" />
           <FormControlLabel value="helsingborg" control={<Radio />} label="Helsingborg" />
           <FormControlLabel value="other" control={<Radio />} label="Other" />
         </RadioGroup>
