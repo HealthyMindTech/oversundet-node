@@ -156,6 +156,72 @@ export default function SupportPage() {
 
                    <Box width="100%" style={{margin: 20}}/>
 
+                  <Grid item xs={12}>
+                    <Typography variant="h5" textAlign="center">
+                      Frequently Asked Questions
+                    </Typography>
+                  </Grid>
+
+                   <Grid item xs={10}>
+                     <Typography component="p" variant="p" style={{ margin: 10 }}>
+                       <b>Q: I can't connect to my WiFi </b> <br></br>
+                       A: If you're trying to connect to your own WiFi, 
+                       then ensure that the 2.4 GHz connection is enabled as well. The board 
+                       uses the 2.4 GHz wireless band for connection. The same applies when 
+                       connecting to a private hotspot - ensure that you have Compatibility Mode enabled
+                       on an iOS device. 
+                     </Typography>
+                   </Grid>
+
+                   <Grid item xs={10}>
+                     <Typography component="p" variant="p" style={{ margin: 10 }}>
+                       <b>Q: I can't connect to the public WiFi</b> <br></br>
+                       A: Connecting to public WiFi is often a challenge due to instability and very
+                       strict security requirements. 
+                     </Typography>
+                   </Grid>
+
+                   <Grid item xs={10}>
+                     <Typography component="p" variant="p" style={{ margin: 10 }}>
+                       <b>Q: Some components get quite hot </b><br></br>
+                       A: This is often an indicator that something is not wired correctly. 
+                       It is not dangerous. Check again 
+                       the connections in the assembly guideline and if nothing looks out of the 
+                       ordinary, disconnect and connect again the sensors. 
+                     </Typography>
+                   </Grid>
+
+                   <Grid item xs={10}>
+                     <Typography component="p" variant="p" style={{ margin: 10 }}>
+                      <b> Q: The LED blinks blue</b> <br></br>
+                       A: That is likely a sign that the LED has been connected the other way around. 
+                       Disconnect, turn it, and connect it again. The type of blinking you should be
+                       seeing is red and green. 
+                     </Typography>
+                   </Grid>
+
+                   <Grid item xs={10}>
+                     <Typography component="p" variant="p" style={{ margin: 10 }}>
+                       <b>Q: What do the different blinking colors mean?</b> <br></br>
+                       A: If your LED is blinking red, then it's signaling that it is trying to connect to
+                       the WiFi. When it's signaling green, it means it has acquired a WiFi connection. 
+                       If it's blinking purple, it's ready to receive new WiFi information. If it's 
+                       blinking blue, it's likely because the LED has to be connected the other way around.  
+                     </Typography>
+                   </Grid>
+
+                   <Grid item xs={10}>
+                     <Typography component="p" variant="p" style={{ margin: 10 }}>
+                       <b>Q: I have a question that is not answered here</b> <br></br>
+                       A: Join our Discord channel and ask for support over there. <Link href="https://discord.gg/uSFYNESFke" target="_blank">
+                         https://discord.gg/uSFYNESFke
+                       </Link>
+                     </Typography>
+                   </Grid>
+
+
+                   <Box width="100%" style={{margin: 20}}/>
+
                    <Grid item xs={12}>
                      <Typography variant="h5" textAlign="center">
                        3D Printable parts
@@ -198,5 +264,4 @@ export default function SupportPage() {
            </Grid>
          </Box>;
 
-// https://www.youtube.com/watch?v=pP5arDGhMy4
 }
