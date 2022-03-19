@@ -145,6 +145,33 @@ export default function SupportPage() {
                    <Grid item xs={1}></Grid>
                    <Grid item xs={2}>
                      <Typography component="h6" variant="h6" style={{ margin: 10}}>
+                       WiFi Connection
+                     </Typography>
+                   </Grid>
+                   <Grid item xs={8}>
+                     <ReactPlayer url="https://youtu.be/kbP1EHTo_UA" controls={true}
+                                  width="100%"
+                                  style={{ margin: 10}}/>
+                   </Grid>
+                   <Grid item xs={1} />
+                   
+                   <Grid item xs={1}></Grid>
+                   <Grid item xs={2}>
+                     <Typography component="h6" variant="h6" style={{ margin: 10}}>
+                       Viewing Device Data
+                     </Typography>
+                   </Grid>
+                   <Grid item xs={8}>
+                     <ReactPlayer url="https://youtu.be/PbWkxmDs-Ow" controls={true}
+                                  width="100%"
+                                  style={{ margin: 10}}/>
+                   </Grid>
+                   <Grid item xs={1} />
+
+
+                   <Grid item xs={1}></Grid>
+                   <Grid item xs={2}>
+                     <Typography component="h6" variant="h6" style={{ margin: 10}}>
                        Enclosure box
                      </Typography>
                    </Grid>
