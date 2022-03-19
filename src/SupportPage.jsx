@@ -114,10 +114,25 @@ export default function SupportPage() {
                    </Grid>
                    <Grid item xs={1} />
 
+
                    <Grid item xs={1}></Grid>
                    <Grid item xs={2}>
                      <Typography component="h6" variant="h6" style={{ margin: 10}}>
-                       Add to scaffold
+                       Add to scaffold (round type)
+                     </Typography>
+                   </Grid>
+                   <Grid item xs={8}>
+                     <ReactPlayer url="https://youtu.be/MAGZStrlJF4" controls={true}
+                                  width="100%"
+                                  style={{ margin: 10}}/>
+                   </Grid>
+                   <Grid item xs={1} />
+                   
+
+                   <Grid item xs={1}></Grid>
+                   <Grid item xs={2}>
+                     <Typography component="h6" variant="h6" style={{ margin: 10}}>
+                       Add to scaffold (blocky type)
                      </Typography>
                    </Grid>
                    <Grid item xs={8}>
