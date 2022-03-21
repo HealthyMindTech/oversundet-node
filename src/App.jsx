@@ -162,7 +162,7 @@ function App() {
               sx={{ mb: 2 }}
             >
               <Typography variant="subtitle1"> 
-                Vigtigt! Hvis der er spørgsmål eller om du ønsker support til, send da en mail til
+                Vigtigt! Hvis der er spørgsmål eller om du ønsker support til din sensor, send da en mail til
                 <a href="mailto:contact@healthymindtech.com"> contact@healthymindtech.com </a> 
                 eller hop ind på&nbsp;
                 <a href="https://discord.gg/uSFYNESFke" target="_blank" rel="noreferrer">
@@ -170,7 +170,7 @@ function App() {
               </Typography>
               <br/>
               <Typography variant="subtitle1"> 
-                Viktigt! Om ni har frågor eller önskar support till sensoren, skicka då en mail till
+                Viktigt! Om ni har frågor eller önskar support till er sensor, skicka då en mail till
                 <a href="mailto:contact@healthymindtech.com"> contact@healthymindtech.com </a> 
                 eller hoppa in på&nbsp; 
                 <a href="https://discord.gg/uSFYNESFke" target="_blank" rel="noreferrer">
