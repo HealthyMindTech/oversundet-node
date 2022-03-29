@@ -71,14 +71,14 @@ export default function DataPlot(props) {
               y={index * 220.937 - 1} 
               width={1921.8 * (interval[0]/10)} 
               height="228.937" 
-              style={{transition: 'all 0.6s'}}
+              style={{transition: 'all 1s linear 0s'}}
               fill="white"/>
             <rect 
               key={`${index}-2`} 
               x={-1.7998 + (1921.8 * (interval[1]/10))}
               y={index * 220.937 - 1} 
               width={1921.8 * ((10-interval[1])/10)} 
-              style={{transition: 'all 1s'}}
+              style={{transition: 'all 1s linear 0s'}}
               height="228.937" 
               fill="white"/>
             </> 
