@@ -33,7 +33,7 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
     const cityParam: string = (req.body.city || '').toLowerCase();
 
     const mood = GOOD_MOODS[moodParam.toLowerCase()];
-    if (!mood) {
+    if (!mood && mood !== 0) {
         context.res = {
             status: 400,
             body: {
