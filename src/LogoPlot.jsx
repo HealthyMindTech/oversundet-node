@@ -78,7 +78,7 @@ export default function DataPlot(props) {
               x={-1.7998 + (1921.8 * (interval[1]/10))}
               y={index * 220.937 - 1} 
               width={1921.8 * ((10-interval[1])/10)} 
-              style={{transition: 'all 0.6s'}}
+              style={{transition: 'all 1s'}}
               height="228.937" 
               fill="white"/>
             </> 
