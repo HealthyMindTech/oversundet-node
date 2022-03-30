@@ -46,7 +46,7 @@ function App() {
             <Container maxWidth="xl">
               <Toolbar disableGutters>
                 <NavLink to="/">
-                  <img src="/favicon.png" style={{
+                  <img src="/favicon.png" alt="logo" style={{
                          marginTop: 10,
                          height: 25,
                          marginRight: 30,
