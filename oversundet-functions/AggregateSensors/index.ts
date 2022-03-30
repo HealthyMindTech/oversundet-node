@@ -201,7 +201,7 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
             l["Timestamp"],
             ...MEASUREMENTS.map(h => l[h] === null ? '' : l[h].toFixed(2))
         ]);
-        const csv = [...headers, ...lines, ''].join("\r\n");
+        const csv = [headers, ...lines, ''].join("\r\n");
         context.res = {
             body: csv,
             contentType: "text/csv"
