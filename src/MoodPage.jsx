@@ -35,7 +35,7 @@ export default function MoodPage() {
       console.log(error);
       setStatusMsg("Error sending mood");
     });
-  }, []);
+  }, [navigate]);
 
   return (
     <Box
