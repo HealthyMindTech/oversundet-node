@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Box, Button } from '@mui/material';
+import map_image from './21.jpg';
 
 import { ButtonGroup } from "@mui/material";
-import Button from '@mui/material/Button';
 
 
 export default function MoodPage() {
@@ -34,24 +34,38 @@ export default function MoodPage() {
   }, []);
 
   return (
+    <Box
+            style={{
+              height: '100%',
+              backgroundImage: `url("${map_image}")`, 
+              position: 'relative', 
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+              backgroundAttachment: 'fixed',
+            }}>
+      <Container align="center" style={{
 
-    <Container align="center">
-      <br></br>
-      <br></br>
-    
-      <Typography mb={3} variant="h6">Send your mood to Extendes Senses!</Typography>
-      <ButtonGroup id="mood-btns" variant="outlined" aria-label="outlined primary button group">
-        <Button onClick={() => {onSubmitMood('happy')}}>🙂 happy</Button>
-        <Button onClick={() => {onSubmitMood('neutral')}}>😐 neutral</Button>
-        <Button onClick={() => {onSubmitMood('sad')}}>🙁 sad</Button>
-      </ButtonGroup>
-      
+      }}>
 
-      <br></br>
-      <br></br>
 
-      <Typography variant="subtitle1">{statusMsg}</Typography>
+        <br></br>
+        <br></br>
+
+
+        <Typography mb={3} variant="h5" style={{fontWeight: 'bold'}}>Send your mood to Extendes Senses!</Typography>
+        <ButtonGroup id="mood-btns" variant="contained" aria-label="outlined primary button group">
+          <Button onClick={() => {onSubmitMood('happy')}}>🙂 happy</Button>
+          <Button onClick={() => {onSubmitMood('neutral')}}>😐 neutral</Button>
+          <Button onClick={() => {onSubmitMood('sad')}}>🙁 sad</Button>
+        </ButtonGroup>
         
-    </Container>
+
+        <br></br>
+        <br></br>
+
+        <Typography variant="subtitle1" style={{fontWeight: 'bold'}}>{statusMsg}</Typography>
+          
+      </Container>
+    </Box>
   );
 }
