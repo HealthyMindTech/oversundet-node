@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import { Typography, Box, Menu, MenuItem, CssBaseline, 
-         Container, IconButton, AppBar, Toolbar, Collapse, Alert } from '@mui/material/';
+         Container, IconButton, AppBar, Toolbar} from '@mui/material/';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import SensorDataPage from './SensorDataPage';
 import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
 
 import MapPage from './MapPage';
 import SupportPage from './SupportPage';
@@ -24,7 +23,6 @@ const mdTheme = createTheme();
 
 function App() {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [bannerOpen, setBannerOpen] = useState(true);
   
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -143,41 +141,6 @@ function App() {
             overflow: 'auto',
           }}
         >
-          <Collapse in={bannerOpen}>
-            <Alert
-              severity="info"
-              action={
-                <IconButton
-                  aria-label="close"
-                  color="inherit"
-                  size="small"
-                  onClick={() => {
-                    setBannerOpen(false);
-                  }}
-                >
-                  <CloseIcon fontSize="inherit" />
-                </IconButton>
-              }
-              style={{marginBottom: 1}}
-              sx={{ mb: 2 }}
-            >
-              <Typography variant="subtitle1"> 
-                Vigtigt! Hvis der er spørgsmål eller om du ønsker support til din sensor, send da en mail til
-                <a href="mailto:contact@healthymindtech.com"> contact@healthymindtech.com </a> 
-                eller hop ind på&nbsp;
-                <a href="https://discord.gg/uSFYNESFke" target="_blank" rel="noreferrer">
-                  discord</a> og få hjælp der.
-              </Typography>
-              <br/>
-              <Typography variant="subtitle1"> 
-                Viktigt! Om ni har frågor eller önskar support till er sensor, skicka då en mail till
-                <a href="mailto:contact@healthymindtech.com"> contact@healthymindtech.com </a> 
-                eller hoppa in på&nbsp; 
-                <a href="https://discord.gg/uSFYNESFke" target="_blank" rel="noreferrer">
-                   discord</a> och få hjälp där.
-              </Typography>
-            </Alert>
-          </Collapse>
           <Routes>
             <Route path="/" element={<HomePage/>} />
             <Route path="/data" element={<MapPage/>} />
