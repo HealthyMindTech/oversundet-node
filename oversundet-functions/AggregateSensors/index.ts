@@ -187,7 +187,8 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
             if (arr[measure].length === 0) {
                 arr[measure] = null;
             } else {
-                arr[measure] = arr[measure].reduce((a, b) => a + b) / arr[measure].length;
+                arr[measure] = arr[measure].reduce(
+                    (a, b) => a + b) / arr[measure].length;
             }
         }
         arr["Timestamp"] = t;

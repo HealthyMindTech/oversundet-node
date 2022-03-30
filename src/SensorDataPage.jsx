@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Grid, Paper, FormControl, Select, TextField, MenuItem, Button, Box, Typography } from '@mui/material';
+import { Grid, Paper, FormControl, Select, TextField, MenuItem, Container,
+         Button, Box, Typography } from '@mui/material';
 import constants from './constants';
 import { GithubPicker } from 'react-color';
 import Chart from "./charts/Chart";
 import moment from 'moment';
+import map_image from './21.jpg';
 
 const refreshAll = function(deviceId, measurements, granularity) {
   const parameters = {
@@ -93,12 +95,21 @@ export default function SensorDataPage() {
 
   return (
     <Box
-      sx={{ width: 'auto', m: 3 }}
       role="presentation"
+      style={{
+        height: '100%',
+        backgroundImage: `url("${map_image}")`, 
+        position: 'relative', 
+        backgroundRepeatY: 'space',
+        backgroundSize: '184%',
+        backgroundPositionX: '-820px',
+        backgroundPositionY: '-549px',
+        overflowY: 'scroll'
+      }}
     >
       <Grid container spacing={10} justifyContent="center">
         <Grid item lg={8} md={10} xs={12}>
-          <Paper variant="outlined" style={{padding: 20}}>
+          <Container style={{padding: 20}}>
             <Typography variant="h4" gutterBottom textAlign="center">
               Your Device
             </Typography>
@@ -153,7 +164,7 @@ export default function SensorDataPage() {
               </Grid>
               
             </Grid>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} style={{ marginTop: 8}}>
               {/* Chart */}
               {constants.MEASUREMENTS.map((measurements, index) => {
                 return (
@@ -177,7 +188,7 @@ export default function SensorDataPage() {
                 )
               })}
             </Grid>
-          </Paper>
+          </Container>
         </Grid>
       </Grid>
     </Box>

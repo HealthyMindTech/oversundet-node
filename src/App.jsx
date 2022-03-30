@@ -18,7 +18,11 @@ const NavLink = styled(Link)({
 });
 
 
-const mdTheme = createTheme();
+const mdTheme = createTheme({
+  typography: {
+    fontFamily: "'Space Mono', monospace"
+  },
+});
 
 
 function App() {
@@ -41,13 +45,27 @@ function App() {
           <AppBar position="static">
             <Container maxWidth="xl">
               <Toolbar disableGutters>
+                <NavLink to="/">
+                  <img src="/favicon.png" style={{
+                         marginTop: 10,
+                         height: 25,
+                         marginRight: 30,
+                         display: 'inline'
+                       }}
+                  />
+                </NavLink>
+
                 <Typography
                   variant="h6"
                   noWrap
                   component="div"
+                  style={{marginRight: 20}}
                   sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                 >
-                  <NavLink to="/">Extended Senses</NavLink>
+
+                  <NavLink to="/">
+                    Extended Senses
+                  </NavLink>
                 </Typography>
                 
                 <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -96,30 +114,31 @@ function App() {
                     </MenuItem>
                   </Menu>
                 </Box>
+
                 <Typography
                   variant="h6"
                   noWrap
                   component="div"
                   sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                 >
-                  <NavLink to="/">
+                  <NavLink to="/" style={{marginRight: '20px'}}>
                     Extended Senses
                   </NavLink>
                 </Typography>
 
-                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '12px' }}>
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '20px' }}>
                   <NavLink to="/data">
                     Data
                   </NavLink>
                 </Typography>
 
-                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '12px' }}>
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '20px' }}>
                   <NavLink to="/data/type-here">
                     Your Device
                   </NavLink>
                 </Typography>
 
-                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '12px' }}>
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '20px' }}>
                   <NavLink to="/support">
                     Help
                   </NavLink>
