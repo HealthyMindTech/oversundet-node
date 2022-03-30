@@ -56,7 +56,6 @@ const httpTrigger: AzureFunction = async function(context: Context, req: HttpReq
 
 
     const credential = new DefaultAzureCredential();
-    console.log("Got credential");
     const producerClient = new EventHubProducerClient("oversundet.servicebus.windows.net",
         "oversundet-hub",
         credential);
