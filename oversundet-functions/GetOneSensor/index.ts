@@ -5,6 +5,7 @@ import axios, { AxiosResponse } from 'axios';
 const TIMESERIES_FQDN = "858c82fb-226a-46bb-89c0-5bb7c278aa73.env.timeseries.azure.com";
 const TIMESERIES_QUERY_URL = `https://${TIMESERIES_FQDN}/timeseries/query?api-version=2020-07-31`;
 const AVAILABILITY_URL = `https://${TIMESERIES_FQDN}/availability?api-version=2020-07-31`
+
 const MEASUREMENTS = [
     "Temperature",
     "PM1",
