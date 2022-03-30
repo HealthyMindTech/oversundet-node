@@ -1,13 +1,16 @@
 import React, { useCallback } from "react";
+import { useNavigate } from 'react-router-dom';
 
-import { Container, Typography, Box, Button } from '@mui/material';
+import { Container, Typography, Box, Button, Alert } from '@mui/material';
 import map_image from './21.jpg';
+import logo from './logo.gif';
+
 
 import { ButtonGroup } from "@mui/material";
 
 
 export default function MoodPage() {
-
+  const navigate = useNavigate();
   const [statusMsg, setStatusMsg] = React.useState("");
   //const [mood, setMood] = React.useState("happy");
 
@@ -24,6 +27,7 @@ export default function MoodPage() {
     }).then(response => {
       if (response.ok) {
         setStatusMsg("Mood sent successfully");
+        navigate("/");
       } else {
         setStatusMsg("Error sending mood");
       }
@@ -51,8 +55,12 @@ export default function MoodPage() {
         <br></br>
         <br></br>
 
+        <img src={logo} alt="loading..." width="80%"/>
 
-        <Typography mb={3} variant="h5" style={{fontWeight: 'bold'}}>Send your mood to Extendes Senses!</Typography>
+        <br></br>
+        <br></br>
+
+        <Typography mb={3} variant="h5" style={{ color: 'black'}}>Send your mood to Extended Senses!</Typography>
         <ButtonGroup id="mood-btns" variant="contained" aria-label="outlined primary button group">
           <Button onClick={() => {onSubmitMood('happy')}}>🙂 happy</Button>
           <Button onClick={() => {onSubmitMood('neutral')}}>😐 neutral</Button>
@@ -62,8 +70,8 @@ export default function MoodPage() {
 
         <br></br>
         <br></br>
-
-        <Typography variant="subtitle1" style={{fontWeight: 'bold'}}>{statusMsg}</Typography>
+        
+        {statusMsg && <Alert severity="info">{statusMsg}</Alert>}
           
       </Container>
     </Box>
