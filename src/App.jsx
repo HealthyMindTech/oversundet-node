@@ -20,7 +20,10 @@ const NavLink = styled(Link)({
 
 const mdTheme = createTheme({
   typography: {
-    fontFamily: "'Space Mono', monospace"
+    fontFamily: "'Space Mono', monospace",
+    allVariants: {
+      color: 'yellow'
+    }
   },
 });
 
