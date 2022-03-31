@@ -7,14 +7,12 @@ export default function HomePage() {
   return <Box
            role="presentation"
            style={{
-            height: '100%',
-            backgroundImage: `url("${map_image}")`, 
-            position: 'relative', 
-            backgroundRepeatY: 'space',
-            backgroundSize: '184%',
-            backgroundPositionX: '-820px',
-             backgroundPositionY: '-549px',
-             overflow: 'scroll'
+             height: '100%',
+             backgroundImage: `url("${map_image}")`, 
+             position: 'relative', 
+             backgroundRepeat: 'no-repeat',
+             backgroundSize: 'cover',
+             overflowY: 'scroll'
           }}
          >
            <Container>

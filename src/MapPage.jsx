@@ -96,10 +96,10 @@ export default function MapPage() {
             style={{
               height: '100%',
               backgroundImage: `url("${map_image}")`, 
-              position: 'relative', 
+              position: 'relative',
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
-              backgroundAttachment: 'fixed',
+              overflowY: 'scroll'
             }}>
             <Container>
               <Slider

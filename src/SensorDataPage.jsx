@@ -99,11 +99,9 @@ export default function SensorDataPage() {
       style={{
         height: '100%',
         backgroundImage: `url("${map_image}")`, 
-        position: 'relative', 
-        backgroundRepeatY: 'space',
-        backgroundSize: '184%',
-        backgroundPositionX: '-820px',
-        backgroundPositionY: '-549px',
+        position: 'relative',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
         overflowY: 'scroll'
       }}
     >
