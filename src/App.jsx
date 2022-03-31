@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import { Typography, Box, Menu, MenuItem, CssBaseline, 
-         Container, IconButton, AppBar, Toolbar} from '@mui/material/';
+import { Typography, Box, Menu, MenuItem, CssBaseline, Alert,
+         Container, IconButton, AppBar, Toolbar, Snackbar } from '@mui/material/';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import SensorDataPage from './SensorDataPage';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -37,6 +37,11 @@ const mdTheme = createTheme({
 
 function App() {
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const [message, setMessage] = useState(null);
+  
+  const onClose = () => {
+    setMessage(null);
+  }
   
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -51,6 +56,17 @@ function App() {
     <ThemeProvider theme={mdTheme}>
       <Router>
         <Box sx={{ display: 'flex' }}>
+          <Snackbar
+            anchorOrigin={{vertical: 'bottom', horizontal: 'center' }}
+            open={message !== null}
+            autoHideDuration={3000}
+            severity="success"
+            onClose={onClose}
+          >
+            <Alert onClose={onClose} severity="success">
+              {message}
+            </Alert>
+          </Snackbar>
           <CssBaseline />
           <AppBar position="static" style={{backgroundColor: '#2c4f65'}}>
             <Container maxWidth="xl">
@@ -107,7 +123,7 @@ function App() {
                       display: { xs: 'block', sm: 'none' },
                     }}
                   >
-                    <MenuItem key="support">
+                    <MenuItem>
                       <Typography textAlign="center">
                         <NavLink to="/mood" onClick={handleCloseNavMenu} style={{ color: 'gray' }}>
                           Mood
@@ -115,15 +131,7 @@ function App() {
                       </Typography>
                     </MenuItem>
 
-                    <MenuItem key="support">
-                      <Typography textAlign="center">
-                        <NavLink to="/data" onClick={handleCloseNavMenu} style={{ color: 'gray' }}>
-                          Data
-                        </NavLink>
-                      </Typography>
-                    </MenuItem>
-
-                    <MenuItem key="your-device">
+                    <MenuItem>
                       <Typography textAlign="center">
                         <NavLink to="/data/type-here" onClick={handleCloseNavMenu} style={{ color: 'gray' }}>
                           Your Device
@@ -131,7 +139,7 @@ function App() {
                       </Typography>
                     </MenuItem>
 
-                    <MenuItem key="support">
+                    <MenuItem>
                       <Typography textAlign="center">
                         <NavLink to="/support" onClick={handleCloseNavMenu} style={{ color: 'gray' }}>
                           Support
@@ -152,12 +160,6 @@ function App() {
                 <Typography textAlign="center" sx={{ my: 2, color: 'white', display: { xs: 'none', sm: 'block' }, marginRight: '20px' }}>
                   <NavLink to="/mood">
                     Mood
-                  </NavLink>
-                </Typography>
-
-                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: { xs: 'none', sm: 'block' }, marginRight: '20px' }}>
-                  <NavLink to="/data">
-                    Data
                   </NavLink>
                 </Typography>
 
@@ -194,7 +196,7 @@ function App() {
             <Route path="/data" element={<MapPage/>} />
             <Route path="/data/:urlDeviceId" element={<SensorDataPage />} />
             <Route path="/support" element={<SupportPage />} />
-            <Route path="/mood" element={<MoodPage />} />
+            <Route path="/mood" element={<MoodPage setMessage={setMessage}/>} />
           </Routes>
         </Box>
       </Router>
