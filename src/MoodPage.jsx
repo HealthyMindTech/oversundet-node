@@ -61,7 +61,7 @@ export default function MoodPage() {
         <br></br>
 
         <Typography mb={3} variant="h5" style={{ color: 'black'}}>Send your mood to Extended Senses!</Typography>
-        <ButtonGroup id="mood-btns" variant="contained" aria-label="outlined primary button group">
+        <ButtonGroup id="mood-btns" variant="contained" size="large" color="danger" aria-label="outlined primary button group">
           <Button onClick={() => {onSubmitMood('happy')}}>🙂 happy</Button>
           <Button onClick={() => {onSubmitMood('neutral')}}>😐 neutral</Button>
           <Button onClick={() => {onSubmitMood('sad')}}>🙁 sad</Button>
@@ -70,7 +70,7 @@ export default function MoodPage() {
 
         <br></br>
         <br></br>
-        
+
         {statusMsg && <Alert severity="info">{statusMsg}</Alert>}
           
       </Container>

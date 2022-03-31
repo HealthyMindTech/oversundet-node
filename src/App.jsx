@@ -19,10 +19,17 @@ const NavLink = styled(Link)({
 
 
 const mdTheme = createTheme({
+  palette: {
+    danger: {
+      main: '#e1526a', //Redish
+      darker: '#e1526a',
+      contrastText: '#eee'
+    }
+  },
   typography: {
     fontFamily: "'Space Mono', monospace",
     allVariants: {
-      color: 'yellow'
+      color: '#2a393f'
     }
   },
 });
@@ -45,7 +52,7 @@ function App() {
       <Router>
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
-          <AppBar position="static">
+          <AppBar position="static" style={{backgroundColor: '#2c4f65'}}>
             <Container maxWidth="xl">
               <Toolbar disableGutters>
                 <NavLink to="/">
@@ -63,7 +70,7 @@ function App() {
                   noWrap
                   component="div"
                   style={{marginRight: 20}}
-                  sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                  sx={{ mr: 2, display: { xs: 'none', sm: 'flex' } }}
                 >
 
                   <NavLink to="/">
@@ -71,7 +78,7 @@ function App() {
                   </NavLink>
                 </Typography>
                 
-                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                <Box sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'none' } }}>
                   <IconButton
                     size="large"
                     aria-label="account of current user"
@@ -86,7 +93,7 @@ function App() {
                   <Menu
                     id="menu-appbar"
                     anchorOrigin={{
-                      vertical: 'bottom',
+                      vertical: 'top',
                       horizontal: 'left',
                     }}
                     keepMounted
@@ -97,9 +104,25 @@ function App() {
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNavMenu}
                     sx={{
-                      display: { xs: 'block', md: 'none' },
+                      display: { xs: 'block', sm: 'none' },
                     }}
                   >
+                    <MenuItem key="support">
+                      <Typography textAlign="center">
+                        <NavLink to="/mood" onClick={handleCloseNavMenu} style={{ color: 'gray' }}>
+                          Mood
+                        </NavLink>
+                      </Typography>
+                    </MenuItem>
+
+                    <MenuItem key="support">
+                      <Typography textAlign="center">
+                        <NavLink to="/data" onClick={handleCloseNavMenu} style={{ color: 'gray' }}>
+                          Data
+                        </NavLink>
+                      </Typography>
+                    </MenuItem>
+
                     <MenuItem key="your-device">
                       <Typography textAlign="center">
                         <NavLink to="/data/type-here" onClick={handleCloseNavMenu} style={{ color: 'gray' }}>
@@ -122,28 +145,31 @@ function App() {
                   variant="h6"
                   noWrap
                   component="div"
-                  sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+                  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}
                 >
-                  <NavLink to="/" style={{marginRight: '20px'}}>
-                    Extended Senses
+                </Typography>
+
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: { xs: 'none', sm: 'block' }, marginRight: '20px' }}>
+                  <NavLink to="/mood">
+                    Mood
                   </NavLink>
                 </Typography>
 
-                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '20px' }}>
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: { xs: 'none', sm: 'block' }, marginRight: '20px' }}>
                   <NavLink to="/data">
                     Data
                   </NavLink>
                 </Typography>
 
-                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '20px' }}>
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: { xs: 'none', sm: 'block' }, marginRight: '20px' }}>
                   <NavLink to="/data/type-here">
                     Your Device
                   </NavLink>
                 </Typography>
 
-                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: 'block', marginRight: '20px' }}>
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: { xs: 'none', sm: 'block' }, marginRight: '20px' }}>
                   <NavLink to="/support">
-                    Help
+                    Support
                   </NavLink>
                 </Typography>
               </Toolbar>

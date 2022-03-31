@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import logo from './logo.gif';
 import map_image from './21.jpg';
-import { Container, Box, Typography, Grid } from '@mui/material';
+import { Container, Box, Typography, Grid, Alert } from '@mui/material';
 
 export default function HomePage() {
+  const [searchParams] = useSearchParams();
+  const [showMoodMsg, setShowMoodMsg] = useState(searchParams.get('mood') === 'true');
+
   return <Box
            role="presentation"
            style={{
@@ -17,22 +21,27 @@ export default function HomePage() {
          >
            <Container>
             <br></br>
-            <br></br>
           
-            <img src={logo} alt="loading..." width="80%"/>
+
+            {showMoodMsg && <div>
+              <Alert onClick={() => {setShowMoodMsg(false)}} severity="info">Your mood has been sent to Extended Senses!</Alert>
+              <br></br>
+              <br></br>
+              </div>}
+            <img src={logo} alt="loading..." width="100%"/>
 
             <br></br>
             <br></br>
 
-            <Typography component="p" variant="p" textAlign="center" style={{ color: 'white'}}>
-              Welcome to the Extended Senses project. 
+            <Typography component="p" variant="h4" textAlign="center" style={{ color: 'white'}}>
+              Welcome to the Extended Senses project
             </Typography> 
 
             <br></br>
             <br></br>
              <Grid container spacing={2}>
-               <Grid item xs={3} />
-               <Grid item xs={6}>
+               <Grid item xs={1} />
+               <Grid item xs={10} style={{fontWeight: 'bold'}}>
                  <Typography component="p" variant="p">
               Extended Senses is an artistic collaboration between one Swedish and one Danish art collective and the two cities Helsingør and Helsingborg. Together they have been exploring how sensors can be implemented in a city through an artistic, collective process providing agency about data and sensors to citizens. The work can be experienced through a light installation exhibited in April at Kulturværftet, Helsingør and in June during the international city expo H22 at Dunkers Kulturhus, Helsingborg and online through the experience of the citizens involved in sensing the cities. Besides providing both cities with an artistic experience we hope to form new connections and understandings of what it means to be a human in relation to nature and the city.
              </Typography>
