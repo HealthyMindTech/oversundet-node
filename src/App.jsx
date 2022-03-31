@@ -29,7 +29,7 @@ const mdTheme = createTheme({
   typography: {
     fontFamily: "'Space Mono', monospace",
     allVariants: {
-      color: '#2a393f'
+      color: '#112'
     }
   },
 });
