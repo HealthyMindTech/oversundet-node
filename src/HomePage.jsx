@@ -41,7 +41,7 @@ export default function HomePage() {
             <br></br>
              <Grid container spacing={2}>
                <Grid item xs={1} />
-               <Grid item xs={10} style={{fontWeight: 'bold'}}>
+               <Grid item xs={10}>
                  <Typography component="p" variant="p">
               Extended Senses is an artistic collaboration between one Swedish and one Danish art collective and the two cities Helsingør and Helsingborg. Together they have been exploring how sensors can be implemented in a city through an artistic, collective process providing agency about data and sensors to citizens. The work can be experienced through a light installation exhibited in April at Kulturværftet, Helsingør and in June during the international city expo H22 at Dunkers Kulturhus, Helsingborg and online through the experience of the citizens involved in sensing the cities. Besides providing both cities with an artistic experience we hope to form new connections and understandings of what it means to be a human in relation to nature and the city.
              </Typography>

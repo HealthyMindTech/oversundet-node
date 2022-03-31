@@ -29,6 +29,7 @@ const mdTheme = createTheme({
   typography: {
     fontFamily: "'Space Mono', monospace",
     allVariants: {
+      fontWeight: 500,
       color: '#112'
     }
   },
