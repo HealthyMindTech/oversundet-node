@@ -58,9 +58,9 @@ function App() {
       <Router>
         <Box sx={{ display: 'flex' }}>
           <Snackbar
-            anchorOrigin={{vertical: 'bottom', horizontal: 'center' }}
+            anchorOrigin={{vertical: 'top', horizontal: 'center' }}
             open={message !== null}
-            autoHideDuration={3000}
+            autoHideDuration={6000}
             severity="success"
             onClose={onClose}
           >
