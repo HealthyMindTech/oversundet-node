@@ -39,20 +39,20 @@ export default function HomePage() {
             </Typography> 
 
             <br></br>
-            <ReactPlayer url="https://vimeo.com/699379865/a2e4e7d65b" controls={true}
-                        width="100%"
-                        style={{ margin: 10}}/>
-            
             <br></br>
+
              <Grid container spacing={2}>
                <Grid item xs={1} />
                <Grid item xs={10}>
                  <Typography component="p" variant="p">
               Extended Senses is an artistic collaboration between one Swedish and one Danish art collective and the two cities Helsingør and Helsingborg. Together they have been exploring how sensors can be implemented in a city through an artistic, collective process providing agency about data and sensors to citizens. The work can be experienced through a light installation exhibited in April at Kulturværftet, Helsingør and in June during the international city expo H22 at Dunkers Kulturhus, Helsingborg and online through the experience of the citizens involved in sensing the cities. Besides providing both cities with an artistic experience we hope to form new connections and understandings of what it means to be a human in relation to nature and the city.
              </Typography>
-
+            
              <br></br>
-               
+             <ReactPlayer url="https://vimeo.com/699379865/a2e4e7d65b" controls={true}
+                        width="100%"/>
+              <br></br>
+
              <Typography components="title5" variant="h5" component="h5">Distributed Mind</Typography>
              <Typography component="p" variant="p">
                The Danish art collective built a new sensor system for the two cities to be distributed amongst citizens. Through workshops held in March and April they teach citizens how to set up and read the sensors. The citizens are an important part of the work and their experiences are integrated in the work; on a website they describe the experience of gathering the data and learning to listen to and observe the city through an extended sensor system. All of a sudden they are not only experiencing the city and the nature of the city through their existing senses, eyes, ears etc., they are given a new set of sensors to observe and experience with. The citizens take the sensors home and thus they’ll be distributed making the data flow from every corner of the city as a network of thoughts - a distributed mind.
