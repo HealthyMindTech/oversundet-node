@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import ReactPlayer from 'react-player/lazy'
 import logo from './logo.gif';
 import map_image from './21.jpg';
 import { Container, Box, Typography, Grid, Alert } from '@mui/material';
@@ -38,6 +39,10 @@ export default function HomePage() {
             </Typography> 
 
             <br></br>
+            <ReactPlayer url="https://vimeo.com/699379865/a2e4e7d65b" controls={true}
+                        width="100%"
+                        style={{ margin: 10}}/>
+            
             <br></br>
              <Grid container spacing={2}>
                <Grid item xs={1} />
