@@ -11,6 +11,7 @@ import MapPage from './MapPage';
 import SupportPage from './SupportPage';
 import HomePage from './HomePage';
 import MoodPage from './MoodPage';
+import GetDevicePage from './GetDevicePage';
 
 const NavLink = styled(Link)({
   textDecoration: 'none',
@@ -147,6 +148,14 @@ function App() {
                         </NavLink>
                       </Typography>
                     </MenuItem>
+
+                    <MenuItem>
+                      <Typography textAlign="center">
+                        <NavLink to="/getdevice" onClick={handleCloseNavMenu} style={{ color: 'gray' }}>
+                          Get Device
+                        </NavLink>
+                      </Typography>
+                    </MenuItem>
                   </Menu>
                 </Box>
 
@@ -175,6 +184,12 @@ function App() {
                     Support
                   </NavLink>
                 </Typography>
+
+                <Typography textAlign="center" sx={{ my: 2, color: 'white', display: { xs: 'none', sm: 'block' }, marginRight: '20px' }}>
+                  <NavLink to="/getdevice">
+                    Get Device
+                  </NavLink>
+                </Typography>
               </Toolbar>
             </Container>
           </AppBar>
@@ -197,6 +212,7 @@ function App() {
             <Route path="/data" element={<MapPage/>} />
             <Route path="/data/:urlDeviceId" element={<SensorDataPage />} />
             <Route path="/support" element={<SupportPage />} />
+            <Route path="/getdevice" element={<GetDevicePage />} />
             <Route path="/mood" element={<MoodPage setMessage={setMessage}/>} />
           </Routes>
         </Box>

@@ -34,7 +34,7 @@ export default function SupportPage() {
                          for assistance.
                        </Typography>
                        <Typography component="p" variant="p" style={{margin: 10}}>
-                         First and foremost we invite you to our Discord channel:
+                         First and foremost we invite you to our Discord channel:&nbsp;
                          <Link color="inherit" href="https://discord.gg/uSFYNESFke" target="_blank">
                            https://discord.gg/uSFYNESFke
                          </Link>
@@ -57,7 +57,7 @@ export default function SupportPage() {
                      
                      <Grid item xs={10}>
                        <Typography component="p" variant="p" style={{ margin: 10 }}>
-                         A digital copy of the instruction sheet that was provided to you when you received the sensor,
+                         A digital copy of the instruction sheet for assembly and setup
                          can be found here:
                          <Link target="_blank" style={{ margin: 5 }} color="inherit"
                                href="instruction_guide.pdf">Instructions for assembly and setup</Link>
@@ -73,7 +73,8 @@ export default function SupportPage() {
                      <Box width="100%" style={{margin: 10}}/>
                      <Grid item xs={10}>
                        <Typography component="p" variant="p" style={{ margin: 10 }}>
-                         The antenna that came into your kit might look a bit different than the one in the assembly instructions. 
+                         Your kit might include an antenna, but not all models of the sensors require one. If you have
+                         an antenna, then note that the antenna that came into your kit might look a bit different than the one in the assembly instructions. 
                          The asembly instructions are the same nevertheless. 
                        </Typography>
                      </Grid>
@@ -263,7 +264,7 @@ export default function SupportPage() {
                      <Grid item xs={10}>
                        <Typography component="p" variant="p" style={{ margin: 10 }}>
                          <b>Q: I have a question that is not answered here</b> <br></br>
-                         A: Join our Discord channel and ask for support over there.
+                         A: Join our Discord channel and ask for support over there.&nbsp;
                          <Link color="inherit" href="https://discord.gg/uSFYNESFke" target="_blank">
                            https://discord.gg/uSFYNESFke
                          </Link>
@@ -283,28 +284,28 @@ export default function SupportPage() {
 
                      <Grid item xs={10}>
                        <Typography component="p" variant="p" style={{margin: 10}}>
-                         Bee hive enclosure:
+                         Bee hive enclosure:&nbsp;
                          <Link color="inherit" href="https://www.thingiverse.com/thing:5276204" target="_blank">
                            https://www.thingiverse.com/thing:5276204
                          </Link>
                        </Typography>
 
                        <Typography component="p" variant="p" style={{margin: 10}}>
-                         Round Casing:
+                         Round Casing:&nbsp;
                          <Link color="inherit" href="https://www.thingiverse.com/thing:5276189" target="_blank">
                            https://www.thingiverse.com/thing:5276189
                          </Link>
                        </Typography>
 
                        <Typography component="p" variant="p" style={{margin: 10}}>
-                         Blocky Enclosure:
+                         Blocky Enclosure:&nbsp;
                          <Link color="inherit" href="hhttps://www.thingiverse.com/thing:5212085" target="_blank">
                            https://www.thingiverse.com/thing:5212085
                          </Link>
                        </Typography>
 
                        <Typography component="p" variant="p" style={{margin: 10}}>
-                         H22 Blocky Enclosure:
+                         H22 Blocky Enclosure:&nbsp;
                          <Link color="inherit" href="https://www.thingiverse.com/thing:5278318" target="_blank">
                            https://www.thingiverse.com/thing:5278318
                          </Link>

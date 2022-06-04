@@ -112,7 +112,7 @@ export default function SensorDataPage() {
               Your Device
             </Typography>
             <Typography style={{ margin: 20}} variant="body1" gutterBottom textAlign="center">
-              If you were given a sensor, this is where you can see the data that it generates.
+              If you have a sensor, this is where you can see the data that it generates.
             </Typography>
 
             <Grid container spacing={2}>
