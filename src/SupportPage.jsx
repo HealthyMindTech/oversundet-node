@@ -311,6 +311,13 @@ export default function SupportPage() {
                          </Link>
                        </Typography>
                        
+                       <Typography component="p" variant="p" style={{margin: 10}}>
+                         Rabbit enclosure:&nbsp;
+                         <Link color="inherit" href="https://www.thingiverse.com/thing:5402574" target="_blank">
+                         https://www.thingiverse.com/thing:5402574
+                         </Link>
+                       </Typography>
+                       
                      </Grid>
 
 
